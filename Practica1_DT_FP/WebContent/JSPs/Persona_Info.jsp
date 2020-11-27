@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html public>
-<jsp:useBean class="beans.Persona" id="persona" scope="page"/>
+<jsp:useBean class="ec.edu.ups.modelo.Persona" id="persona" scope="page"/>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">

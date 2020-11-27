@@ -2,103 +2,112 @@ package ec.edu.ups.modelo;
 
 import java.io.Serializable;
 
-public class Persona implements Serializable {
-	
+public class Persona implements Serializable{
+
 	private static final long serialVersionUID = 1L;
-	private int personaId;
-	private String personaCedula;
-	private String personaNombre;
-	private String personaApellido;
-	private String personaRol;
-	private String personaTelfono;
-	private String personaDireccion;
-	private String personaEmail;
-	private String personaContrasena;
-	private Empresa empresa;
-	
+	private int id;
+	private String cedula;
+	private String nombre;
+	private String apellido;
+	private char rol;
+	private String telefono;
+	private String direccion;
+	private String email;
+	private String contrasena;
 	
 	public Persona() {
+		// Constructor obligatorio
+	} 
+
+	public Persona(int id, String cedula, String nombre, String apellido, String telefono, String direccion, String email, String contrasena) { 
+		// Constructor opcional
+		this.setId(id);
+		this.setCedula(cedula);
+		this.setNombre(nombre);
+		this.setApellido(apellido);
+		//this.setRol(rol);
+		this.setTelefono(telefono);
+		this.setDireccion(direccion);
+		this.setEmail(email);
+		this.setContrasena(contrasena);
 		
 	}
-	public Persona(String personaCedula, String personaNombre, String personaApellido, String personaRol, String personaTelfono, String personaDireccion, String personaEmail, String personaContrasena, Empresa empresa) {
-		this.personaId= personaId;
-		this.personaCedula= personaCedula;
-		this.personaNombre= personaNombre;
-		this.personaApellido= personaApellido;
-		this.personaRol= personaRol;
-		this.personaTelfono= personaTelfono;
-		this.personaDireccion= personaDireccion;
-		this.personaEmail= personaEmail;
-		this.personaContrasena= personaContrasena;
-		this.empresa= empresa;
+
+	public int getId() {
+		return id;
 	}
-	public int getPersonaId() {
-		return personaId;
-	}
-	public void setPersonaId(int personaId) {
-		this.personaId = personaId;
-	}
-	public String getPersonaCedula() {
-		return personaCedula;
-	}
-	public void setPersonaCedula(String personaCedula) {
-		this.personaCedula = personaCedula;
-	}
-	public String getPersonaNombre() {
-		return personaNombre;
-	}
-	public void setPersonaNombre(String personaNombre) {
-		this.personaNombre = personaNombre;
-	}
-	public String getPersonaApellido() {
-		return personaApellido;
-	}
-	public void setPersonaApellido(String personaApellido) {
-		this.personaApellido = personaApellido;
-	}
-	public String getPersonaRol() {
-		return personaRol;
-	}
-	public void setPersonaRol(String personaRol) {
-		this.personaRol = personaRol;
-	}
-	public String getPersonaTelfono() {
-		return personaTelfono;
-	}
-	public void setPersonaTelfono(String personaTelfono) {
-		this.personaTelfono = personaTelfono;
-	}
-	public String getPersonaDireccion() {
-		return personaDireccion;
-	}
-	public void setPersonaDireccion(String personaDireccion) {
-		this.personaDireccion = personaDireccion;
-	}
-	public String getPersonaEmail() {
-		return personaEmail;
-	}
-	public void setPersonaEmail(String personaEmail) {
-		this.personaEmail = personaEmail;
-	}
-	public String getPersonaContrasena() {
-		return personaContrasena;
-	}
-	public void setPersonaContrasena(String personaContrasena) {
-		this.personaContrasena = personaContrasena;
-	}
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
-	@Override
-	public String toString() {
-		return "Persona [personaId=" + personaId + ", personaCedula=" + personaCedula + ", personaNombre="
-				+ personaNombre + ", personaApellido=" + personaApellido + ", personaRol=" + personaRol
-				+ ", personaTelfono=" + personaTelfono + ", personaDireccion=" + personaDireccion + ", personaEmail="
-				+ personaEmail + ", personaContrasena=" + personaContrasena + ", empresa=" + empresa + "]";
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
+	public String getCedula() {
+		return cedula;
+	}
+	
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+	
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public char getRol() {
+		return rol;
+	}
+
+	public void setRol(char rol) {
+		this.rol = rol;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 }
+

@@ -1,57 +1,60 @@
 package ec.edu.ups.mysql.jdbc;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
+/**
+ * Class ContextJDBC.
+ * 
+ * Clase que permite obtener una conexión a la base de datos y asegura que si ya
+ * existe una conexión no la vuelva a crear utilizando el patrón de diseño
+ * Singleton. Además, implementa los métodos para poder enviar sentencias SQL como
+ * INSERT, DELETE, UPDATE y SELECT.
+ * 
+ * @author Gabriel A. León Paredes 
+ * Doctor en Tecnologías de Información
+ * https://www.linkedin.com/in/gabrielleonp
+ * 
+ * @see https://www.arquitecturajava.com/ejemplo-de-java-singleton-patrones-classloaders/
+ * @version 1.0
+ *
+ */
 public class ContextJDBC {
-	
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://localhost:3306/GESTION_COMPRAS?serverTimezone=UTC";
+	private static final String URL = "jdbc:mysql://localhost:3306/GESTION_COMPRAS";
 	private static final String USER = "root";
 	private static final String PASS = "DFTUrptu9799";
-	
-	//Solo Cambia la contrasena
-	//private static final String PASS = "";
-	private static ContextJDBC jdbc1 = null;
+	private static ContextJDBC jdbc = null;	
 	private Statement statement = null;
-	
+
 	public ContextJDBC() {
 		this.connect();
 	}
-	
+
 	/**
-	 * Metodo getJDBC
-	 * Obtiene una conexion activa a la Base De Datos
-	 */
-	protected static ContextJDBC getJDBC1() {
-		//Creacion de la conexion a la Base de datos solo si no ha sido creada patron de dise�o singleton
-		if (jdbc1 == null) {
-			jdbc1 = new ContextJDBC();
-		}
-		return jdbc1;
-	}
-	/**
+	 * Método connect.
 	 * 
-	 * Metodo Connect 
-	 * Conexion a la Base de Datos a traves de JDBC
-	 * @throws SQLException 
-	 * 
+	 * Realiza una conexión a la base de datos a través de jdbc
 	 */
 	public void connect() {
 		try {
 			Class.forName(DRIVER);
 			Connection connection = DriverManager.getConnection(URL, USER, PASS);
 			this.statement = connection.createStatement();
-			System.out.println("Conexion Exitosa");
 		} catch (ClassNotFoundException e) {
 			System.out.println(">>>WARNING (JDBC:connect)...problemas con el driver\n" + e.getMessage());
 		} catch (SQLException e) {
 			System.out.println(">>>WARNING (JDBC:connect)...problemas con la BD\n" + e.getMessage());
 		}
 	}
-	
+
 	/**
-	 * Metodo Query
-	 * Realiza la sentencia de Select a la Base de datos
+	 * Método query.
+	 * 
+	 * Realiza una sentencia SELECT a la base de datos.
 	 */
 	public ResultSet query(String sql) {
 		try {
@@ -61,5 +64,38 @@ public class ContextJDBC {
 		}
 		return null;
 	}
-	
+
+	/**
+	 * Método update.
+	 * 
+	 * Realiza una sentencia INSERT, UDPDATE, DELETE, CREATE, entre otras a la base
+	 * de datos.
+	 */
+	public boolean update(String sql) {
+		try {
+			this.statement.executeUpdate(sql);
+			return true;
+		} catch (SQLException e) {
+			System.out.println(">>>WARNING (JDBC:update)... actualizacion: ---" + sql + "---" + e);
+			return false;
+		}
+	}
+
+	/**
+	 * Método getJDBC.
+	 * 
+	 * Obtiene una conexión activa a la base de datos
+	 * 
+	 * @return jdbc
+	 */
+	protected static ContextJDBC getJDBC1() {
+		// creación de la conexión a la base de datos solo si no ha sido creada patrón
+		// de diseño singleton
+		if (jdbc == null) {
+			jdbc = new ContextJDBC();
+		}
+		return jdbc;
+
+	}
+
 }

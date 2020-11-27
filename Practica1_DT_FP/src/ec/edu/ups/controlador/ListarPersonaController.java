@@ -10,35 +10,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ec.edu.ups.dao.DAOFactory;
-import ec.edu.ups.dao.EmpresaDAO;
-import ec.edu.ups.modelo.Empresa;
+import ec.edu.ups.dao.PersonaDAO;
+import ec.edu.ups.modelo.Persona;
 
 /**
- * Servlet implementation class ListarEmpresasController
+ * Servlet implementation class ListarPersonaController
  */
-@WebServlet("/ListarEmpresasController")
-public class ListarEmpresasController extends HttpServlet {
+@WebServlet("/ListarPersonaController")
+public class ListarPersonaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private EmpresaDAO empresaDAO;
-	private List <Empresa>listaEmpresa;
-	
-	public ListarEmpresasController() {
-		empresaDAO = DAOFactory.getFactory().getEmpresaDao();
-		
+	private PersonaDAO personaDao;
+	private List<Persona> listaPersona;
+
+	public ListarPersonaController() {
+		personaDao = DAOFactory.getFactory().getPersonaDAO();
+
 	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = null;
 		try {
-			listaEmpresa = empresaDAO.find();
-			System.out.println("TamaÃ±o de la lista recuperada: " + listaEmpresa.size());
-			request.setAttribute("personas", listaEmpresa);
-			url = "/JSPs/listar_empresas.jsp";
+			listaPersona = personaDao.find();
+			System.out.println("Tamaño de la Lista: " + listaPersona.size());
+			request.setAttribute("personas", listaPersona);
+			url = "/JSPs/listar_persona.jsp";
 		} catch (Exception e) {
 			url = "/JSPs/error.jsp";
 		}
 		getServletContext().getRequestDispatcher(url).forward(request, response);
 	}
-
 
 }
