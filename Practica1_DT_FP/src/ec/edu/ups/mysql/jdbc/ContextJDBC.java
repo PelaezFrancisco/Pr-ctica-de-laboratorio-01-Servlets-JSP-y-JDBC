@@ -9,6 +9,8 @@ public class ContextJDBC {
 	private static final String USER = "root";
 	private static final String PASS = "DFTUrptu9799";
 	
+	//Solo Cambia la contrasena
+	//private static final String PASS = "";
 	private static ContextJDBC jdbc = null;
 	private Statement statement = null;
 	

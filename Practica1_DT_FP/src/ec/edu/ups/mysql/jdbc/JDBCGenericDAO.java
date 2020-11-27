@@ -1,5 +1,7 @@
 package ec.edu.ups.mysql.jdbc;
 
-public class JDBCGenericDAO {
+import ec.edu.ups.dao.GenericDAO;
 
+public abstract class JDBCGenericDAO<T , ID> implements GenericDAO<T, ID> {
+	protected ContextJDBC conexion = ContextJDBC.getJDBC1();
 }
