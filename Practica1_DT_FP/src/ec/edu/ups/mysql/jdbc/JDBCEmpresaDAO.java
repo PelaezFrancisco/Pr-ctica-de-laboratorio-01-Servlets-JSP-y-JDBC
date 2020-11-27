@@ -13,7 +13,7 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, Integer> implements 
 	@Override
 	public List<Empresa> find() {
 		List<Empresa> list = new ArrayList<Empresa>();
-		ResultSet rs = conexion.query("SELECT * FROM Persona");
+		ResultSet rs = conexion.query("SELECT * FROM Ges_Empresa");
 		try {
 			while (rs.next()) {
 				list.add(new Empresa(rs.getInt("id"), rs.getString("nombre"), rs.getString("ruc"),
