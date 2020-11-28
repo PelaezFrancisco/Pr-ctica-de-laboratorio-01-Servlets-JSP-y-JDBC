@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="../css/IniciarSesion.css" rel="stylesheet" type="text/css">
 <title>Persona Encontrada</title>
 </head>
 <body>
