@@ -95,7 +95,6 @@ public class ContextJDBC {
 			jdbc = new ContextJDBC();
 		}
 		return jdbc;
-
 	}
 
 }
