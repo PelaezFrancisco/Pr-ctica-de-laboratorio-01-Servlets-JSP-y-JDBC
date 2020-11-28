@@ -35,7 +35,7 @@ public class PersonaController extends HttpServlet {
 		String url = null;
 		//ASIGNA DATOS DENTRO DE LA PERSONA A TRAVEZ DE PARAMETROS
 		try {
-			persona.setPersonaNombre(request.getParameter("nombre"));
+			persona.setNombre(request.getParameter("nombre"));
 			request.setAttribute("persona", persona);
 			url = "/JSPs/persona.jsp";
 		} catch (Exception e) {
