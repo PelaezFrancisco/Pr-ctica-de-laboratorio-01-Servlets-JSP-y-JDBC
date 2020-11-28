@@ -1,13 +1,14 @@
 package emp.ec.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Persona;
+import ec.edu.ups.modelo.*;
 
 /**
  * Servlet implementation class PersonaController
@@ -34,8 +35,7 @@ public class PersonaController extends HttpServlet {
 		String url = null;
 		//ASIGNA DATOS DENTRO DE LA PERSONA A TRAVEZ DE PARAMETROS
 		try {
-			persona.setNombre(request.getParameter("nombre"));
-			persona.setCedula(request.getParameter("cedula"));
+			persona.setPersonaNombre(request.getParameter("nombre"));
 			request.setAttribute("persona", persona);
 			url = "/JSPs/persona.jsp";
 		} catch (Exception e) {
