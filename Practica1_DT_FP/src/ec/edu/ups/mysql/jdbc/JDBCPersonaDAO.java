@@ -46,11 +46,13 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer> implements 
 	@Override
 	public Persona read(Integer id) {
 		Persona persona = null;
-		ResultSet rs = conexion.query("SELECT * FROM GES_Personas WHERE per_id=" + id);
+		ResultSet rs = conexion.query("SELECT * FROM GES_Personas WHERE per_id= " + id);
 		try {
 			if (rs != null && rs.next()) {
-				persona = new Persona(); 
-				persona.setId(rs.getInt("per_id"));
+				persona = new Persona(rs.getInt("per_id"), rs.getString("per_cedula"), rs.getString("per_nombre"),
+						rs.getString("per_apellido"), rs.getString("per_telefono"), rs.getString("per_direccion"),
+						rs.getString("per_email"), rs.getString("per_telefono"));
+				/*persona.setId(rs.getInt("per_id"));
 				persona.setCedula( rs.getString("per_cedula"));	
 				persona.setNombre(rs.getString("per_nombre"));
 				persona.setApellido(rs.getString("per_apellido"));
@@ -58,7 +60,7 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer> implements 
 				persona.setTelefono(rs.getString("per_telefono"));
 				persona.setDireccion(rs.getString("per_direccion"));
 				persona.setEmail(rs.getString("per_email"));
-				persona.setContrasena(rs.getString("per_contrasena"));
+				persona.setContrasena(rs.getString("per_contrasena"));*/
 			}
 		} catch (SQLException e) {
 			System.out.println(">>>WARNING (JDBCPersonaDAO:read): " + e.getMessage());

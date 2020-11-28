@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/IniciarSesion.css" rel="stylesheet" type="text/css" />
+    <title>Registarse</title>
+</head>
+
+<body>
+    <div class="form">
+        <ul class="tab-group">
+            <li class="tab "><a href="IniciarSesion.html">Log In</a></li>
+            <li class="tab active"><a href="Registrase.html">Sign Up</a></li>
+        </ul>
+
+        <div class="datos">
+            <form id="formulario01" method="POST" action="../controladores/login.php">
+                <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese Nro.Cedula ..." />
+                <br><br>
+                <input type="text" id="nombre" name="nombre" value="" placeholder="Ingrese su Nombre ..." />
+                <br><br>
+                <input type="text" id="apellido" name="apellido" value="" placeholder="Ingrese el Apellido ..." />
+                <br><br>
+                <input type="text" id="rol" name="rol" value="" placeholder="Ingrese su contraseña ..." />
+                <br><br>
+                <input type="text" id="telefono" name="telefono" value="" placeholder="Ingrese el telefono ..." />
+                <br><br>
+                <input type="text" id="direccion" name="direccion" value="" placeholder="Ingrese su direccion ..." />
+                <br><br>
+                <input type="text" id="correo" name="correo" value="" placeholder="Ingrese su correo electronico ..." />
+                <br><br>
+                <input type="text" id="pass" name="pass" value="" placeholder="Ingrese su contraseña ..." />
+                <br><br>
+                <input type="submit" id="login" name="login" value="Registrase" />
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>

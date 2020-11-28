@@ -12,10 +12,13 @@
 	<c:set var="p" scope="request" value="${persona}" />
 	<h1>Persona encontrada</h1>		
 		
-	<p>Id: ${per.id}</p>
-	<p>Cedula: ${per.cedula}</p>
-	<p>Nombre: ${per.nombre}</p>
-	<p>Apellid: ${per.apellido}</p>
+	<p>Id: ${p.id}</p>
+	<p>Cedula: ${p.cedula}</p>
+	<p>Nombre: ${p.nombre}</p>
+	<p>Apellid: ${p.apellido}</p>
+	<p>Id: ${p.telefono}</p>
+	<p>Cedula: ${p.direccion}</p>
+	<p>Nombre: ${p.email}</p>
 	
 	<a href="/EjemploPersonaWebJDBC/index.html">Regresar al index</a>
 	
