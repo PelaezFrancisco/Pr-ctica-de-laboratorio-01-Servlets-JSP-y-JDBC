@@ -19,13 +19,13 @@ public class Persona implements Serializable{
 		// Constructor obligatorio
 	} 
 
-	public Persona(int id, String cedula, String nombre, String apellido ,String telefono, String direccion, String email, String contrasena) { 
+	public Persona(int id, String cedula, String nombre, String apellido, char rol, String telefono, String direccion, String email, String contrasena) { 
 		// Constructor opcional
 		this.setId(id);
 		this.setCedula(cedula);
 		this.setNombre(nombre);
 		this.setApellido(apellido);
-		//this.setRol(rol);
+		this.setRol(rol);
 		this.setTelefono(telefono);
 		this.setDireccion(direccion);
 		this.setEmail(email);

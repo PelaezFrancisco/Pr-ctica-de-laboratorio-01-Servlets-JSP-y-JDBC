@@ -24,7 +24,7 @@ import ec.edu.ups.dao.GenericDAO;
  * 
  * @version 1.0
  */
-public abstract class JDBCGenericDAO<T, ID> implements GenericDAO<T, ID> {
+public abstract class JDBCGenericDAO<T, ID, EMAIL> implements GenericDAO<T, ID, EMAIL> {
 	protected ContextJDBC conexion = ContextJDBC.getJDBC1();
 
 }

@@ -24,6 +24,6 @@ import ec.edu.ups.modelo.Persona;
  * @version 1.0
  *
  */
-public interface PersonaDAO extends GenericDAO<Persona, Integer> {
+public interface PersonaDAO extends GenericDAO<Persona, Integer, String> {
 
 }
