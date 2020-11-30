@@ -11,7 +11,7 @@ import ec.edu.ups.modelo.Empresa;
 import ec.edu.ups.modelo.Persona;
 import ec.edu.ups.modelo.Producto;
 
-public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer> implements ProductoDAO {
+public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> implements ProductoDAO {
 
 	@Override
 	public void createTable() {
@@ -78,6 +78,12 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer> implement
 			System.out.println(">>>WARNING (JDBCPersonaDAO:find): " + e.getMessage());
 		}
 		return list;
+	}
+
+	@Override
+	public Producto find_email(String email) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

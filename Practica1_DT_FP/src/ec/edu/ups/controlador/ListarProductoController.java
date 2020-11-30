@@ -39,7 +39,7 @@ public class ListarProductoController extends HttpServlet {
 			listaProducto = productoDao.find();
 			System.out.println("Tamaño de la Lista: " + listaProducto.size());
 			request.setAttribute("productos", listaProducto);
-			url = "/JSPs/listar_productos.jsp";
+			url = "/private/admin/listar_productos.jsp";
 		} catch (Exception e) {
 			url = "/JSPs/error.jsp";
 		}

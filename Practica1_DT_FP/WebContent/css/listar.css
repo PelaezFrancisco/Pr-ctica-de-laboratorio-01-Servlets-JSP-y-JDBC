@@ -169,3 +169,23 @@ textarea {
         text-align: center;
     }
 }
+
+table {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+}
+
+tr {
+    background-repeat: repeat-x;
+    color: #000000;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-right-color: #558FA6;
+    border-bottom-color: #58967c;
+    font-family: “Trebuchet MS”, Arial;
+    text-transform: uppercase;
+}
