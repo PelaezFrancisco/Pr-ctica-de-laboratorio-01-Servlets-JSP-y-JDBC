@@ -23,7 +23,7 @@ import ec.edu.ups.modelo.Producto;
  *             valor único
  * @version 1.0
  */
-public interface GenericDAO<T, ID> {
+public interface GenericDAO<T, ID, EMAIL> {
 
 	public void createTable();
 
@@ -36,4 +36,6 @@ public interface GenericDAO<T, ID> {
 	public void delete(T entity);
 
 	public List<T> find();
+
+	public T find_email(EMAIL email);
 }

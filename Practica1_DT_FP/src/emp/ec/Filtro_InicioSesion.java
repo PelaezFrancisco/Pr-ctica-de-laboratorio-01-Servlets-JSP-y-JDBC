@@ -47,7 +47,7 @@ public class Filtro_InicioSesion implements Filter {
 			chain.doFilter(request, response);
 		}else {
 			System.out.println("No se ha iniciado sesion");
-			((HttpServletResponse) response).sendRedirect("http://...");
+			((HttpServletResponse) response).sendRedirect("http://");
 		}
 		
 	}

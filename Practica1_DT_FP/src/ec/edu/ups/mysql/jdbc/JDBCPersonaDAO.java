@@ -27,7 +27,7 @@ import ec.edu.ups.modelo.Persona;
  * 
  * @version 1.0
  */
-public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer> implements PersonaDAO {
+public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer, String> implements PersonaDAO {
 
 	@Override
 	public void createTable() {
@@ -50,7 +50,7 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer> implements 
 		try {
 			if (rs != null && rs.next()) {
 				persona = new Persona(rs.getInt("per_id"), rs.getString("per_cedula"), rs.getString("per_nombre"),
-						rs.getString("per_apellido"), rs.getString("per_telefono"), rs.getString("per_direccion"),
+						rs.getString("per_apellido"), rs.getString("per_rol").charAt(0), rs.getString("per_telefono"), rs.getString("per_direccion"),
 						rs.getString("per_email"), rs.getString("per_telefono"));
 				/*persona.setId(rs.getInt("per_id"));
 				persona.setCedula( rs.getString("per_cedula"));	
@@ -99,6 +99,31 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer> implements 
 			System.out.println(">>>WARNING (JDBCPersonaDAO:find): " + e.getMessage());
 		}
 		return list;
+	}
+	
+	@Override
+	public Persona find_email(String email) {
+		Persona persona = null;
+		ResultSet rs = conexion.query("SELECT * FROM GES_Personas WHERE per_email= \"" + email+"\"");
+		try {
+			if (rs != null && rs.next()) {
+				persona = new Persona();
+				
+				persona.setId(rs.getInt("per_id"));
+				persona.setCedula( rs.getString("per_cedula"));	
+				persona.setNombre(rs.getString("per_nombre"));
+				persona.setApellido(rs.getString("per_apellido"));
+				persona.setRol((rs.getString("per_rol").charAt(0)));
+				persona.setTelefono(rs.getString("per_telefono"));
+				persona.setDireccion(rs.getString("per_direccion"));
+				persona.setEmail(rs.getString("per_email"));
+				persona.setContrasena(rs.getString("per_contrasena"));
+			}
+		} catch (SQLException e) {
+			System.out.println(">>>Error al buscar persona con mail "+ email + e.getMessage());
+		}
+
+		return persona;
 	}
 
 }
