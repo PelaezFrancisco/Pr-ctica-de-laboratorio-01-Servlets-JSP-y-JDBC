@@ -7,6 +7,7 @@ import java.util.List;
 
 import ec.edu.ups.dao.PersonaDAO;
 import ec.edu.ups.modelo.Persona;
+import ec.edu.ups.modelo.Producto;
 
 /**
  * Clase JDBCPersonaDAO.
@@ -124,6 +125,12 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer, String> imp
 		}
 
 		return persona;
+	}
+
+	@Override
+	public List<Producto> ProEmpPer() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -54,8 +54,11 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 	}
 
 	@Override
-	public void update(Producto entity) {
-		// TODO Auto-generated method stub
+	public void update(Producto producto) {
+		conexion.update("UPDATE GES_Productos SET pro_nombre = '" + producto.getProductoNombre() + "', pro_descripcion = '" + producto.getProductoDescripcion()
+		+ "', pro_stock = " + producto.getProductoStock()+ ", pro_precioV = " + producto.getProductoPrecioVenta()
+		+ ", cat_id = " + producto.getCat_id() + ", emp_id = " + producto.getEmp_id()
+		+ " WHERE pro_id = " + producto.getProductoId());
 		
 	}
 
@@ -84,6 +87,22 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 	public Producto find_email(String email) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+
+	@Override
+	public List<Producto> ProEmpPer() {
+		List<Producto> list = new ArrayList<Producto>();
+		ResultSet rs= conexion.query("select  * from GES_Productos pro ,GES_Empresas e, GES_Personas per  Where pro.emp_id = e.emp_id AND per.emp_id = e.emp_id");
+		try {
+			while(rs.next()) {
+				list.add(new Producto(rs.getInt("pro_id"), rs.getString("pro_nombre"), rs.getString("pro_descripcion"),
+						rs.getInt("pro_stock"), rs.getDouble("pro_precioV"),rs.getInt("cat_id"), rs.getInt("emp_id")));
+			}
+		}catch (SQLException e) {
+			System.out.println(">>>WARNING (JDBCPersonaDAO:find): " + e.getMessage());
+		}
+		return list;
 	}
 
 	

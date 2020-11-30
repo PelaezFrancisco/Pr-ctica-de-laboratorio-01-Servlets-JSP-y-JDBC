@@ -38,4 +38,7 @@ public interface GenericDAO<T, ID, EMAIL> {
 	public List<T> find();
 
 	public T find_email(EMAIL email);
+
+	public List<Producto> ProEmpPer();
+
 }
