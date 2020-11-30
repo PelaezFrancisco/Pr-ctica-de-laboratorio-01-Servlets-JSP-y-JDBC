@@ -23,15 +23,15 @@
 			<td><strong>Direccion</strong></td>
 			<td><strong>Email</strong></td>
 		</tr>
-		<c:forEach var="p" items="${lista}">
+		<c:forEach var="pro" items="${lista}">
 			<tr>
-				<td>${p.id}</td>
-				<td>${p.cedula}</td>
-				<td>${p.nombre}</td>
-				<td>${p.apellido}</td>
-				<td>${p.telefono}</td>
-				<td>${p.direccion}</td>
-				<td>${p.email}</td>
+				<td>${pro.productoId}</td>
+				<td>${pro.productoNombre}</td>
+				<td>${pro.productoDescripcion}</td>
+				<td>${pro.productoStock}</td>
+				<td>${pro.productoPrecioVenta}</td>
+				<td>${pro.cat_id}</td>
+				<td>${pro.emp_id}</td>
 			</tr>
 		</c:forEach>
 	</table>

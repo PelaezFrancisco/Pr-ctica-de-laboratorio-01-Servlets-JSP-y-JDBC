@@ -11,17 +11,23 @@ public class Producto implements Serializable {
     private int productoStock;
     private double productoPrecioVenta;
     private Categoria categoria;
+    private Empresa empresa;
+    private int cat_id;
+    private int emp_id;
     
-    public Producto() {
-		super();
+
+	public Producto() {
+		
 		// TODO Auto-generated constructor stub
 	}
-    public Producto(int productoId, String productoNommbre, String productoDescripcion, int productoStock, double productoPrecioVenta) {
-		this.productoId=productoId;
-		this.productoNombre=productoNommbre;
-		this.productoDescripcion=productoDescripcion;
-		this.productoStock= productoStock;
-		this.productoPrecioVenta=productoPrecioVenta;	
+    public Producto(int productoId, String productoNombre, String productoDescripcion, int productoStock, double productoPrecioVenta, int cat_id, int emp_id) {
+		this.setProductoId(productoId);
+		this.setProductoNombre(productoNombre);
+		this.setProductoDescripcion(productoDescripcion);
+		this.setProductoStock(productoStock);
+		this.setProductoPrecioVenta(productoPrecioVenta);
+		this.setCat_id(cat_id);
+		this.setEmp_id(emp_id);
 	}
 	
 	public int getProductoId() {
@@ -54,11 +60,34 @@ public class Producto implements Serializable {
 	public void setProductoPrecioVenta(double productoPrecioVenta) {
 		this.productoPrecioVenta = productoPrecioVenta;
 	}
+	public int getCat_id() {
+		return cat_id;
+	}
+	public void setCat_id(int cat_id) {
+		this.cat_id = cat_id;
+	}
+	public int getEmp_id() {
+		return emp_id;
+	}
+	public void setEmp_id(int emp_id) {
+		this.emp_id = emp_id;
+	}
 	public Categoria getCategoria() {
 		return categoria;
 	}
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
     
 }

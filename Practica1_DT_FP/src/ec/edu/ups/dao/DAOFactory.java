@@ -30,5 +30,7 @@ public abstract class DAOFactory {
 
 	public abstract PersonaDAO getPersonaDAO();
 	
+	public abstract ProductoDAO getProductoDAO();
+	
 
 }
