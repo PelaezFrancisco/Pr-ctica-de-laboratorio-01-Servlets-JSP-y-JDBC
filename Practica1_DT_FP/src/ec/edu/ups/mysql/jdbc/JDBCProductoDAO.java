@@ -38,16 +38,37 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 	@Override
 	public Producto read(Integer id) {
 		Producto producto = null;
-		Categoria categoria= null;
-		Empresa empresa = null;
+		
 		ResultSet rs = conexion.query("SELECT * FROM GES_Productos WHERE pro_id="+id);
+		System.out.println(id);
 		try {
 			if (rs != null && rs.next()) {
-				producto= new Producto();
-				
-				
+				producto= new Producto(rs.getInt("pro_id"),rs.getString("pro_nombre"),rs.getString("pro_descripcion"),
+						rs.getInt("pro_stock"),rs.getDouble("pro_precioV"),rs.getInt("cat_id"),rs.getInt("emp_id"));
+				System.out.println(rs.getString("pro_nombre"));
 			}
 		} catch (Exception e) {
+			e.getStackTrace();
+			System.out.println(">>>WARNING (JDBCPersonaDAO:read): " + e.getMessage());
+		}
+		return producto;
+	}
+
+	@Override
+	public Producto read2(String nombre) {
+		Producto producto = null;
+		
+		ResultSet rs = conexion.query("SELECT * FROM GES_Productos WHERE pro_nombre='"+nombre+"'");
+		System.out.println(nombre);
+		try {
+			
+			if (rs != null && rs.next()) {
+				producto= new Producto(rs.getInt("pro_id"),rs.getString("pro_nombre"),rs.getString("pro_descripcion"),
+						rs.getInt("pro_stock"),rs.getDouble("pro_precioV"),rs.getInt("cat_id"),rs.getInt("emp_id"));
+			System.out.println(rs.getString("pro_nombre"));	
+			}
+		} catch (Exception e) {
+			e.getStackTrace();
 			System.out.println(">>>WARNING (JDBCPersonaDAO:read): " + e.getMessage());
 		}
 		return producto;
@@ -65,7 +86,7 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 	@Override
 	public void delete(Producto producto) {
 		conexion.update("DELETE FROM GES_Productos WHERE pro_id= "+producto.getProductoId());
-		
+		System.out.println("Se elimino el producto");
 	}
 
 	@Override

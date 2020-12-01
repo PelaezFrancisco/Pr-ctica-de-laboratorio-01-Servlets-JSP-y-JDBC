@@ -211,4 +211,10 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, Integer, String> imp
 		return null;
 	}
 
+	@Override
+	public Empresa read2(String nombre) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

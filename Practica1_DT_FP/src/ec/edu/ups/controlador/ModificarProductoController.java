@@ -52,7 +52,7 @@ public class ModificarProductoController extends HttpServlet {
 			producto.setCat_id(Integer.valueOf(request.getParameter("categ")));
 			producto.setEmp_id(Integer.valueOf(request.getParameter("emp")));
 			productoDao.update(producto);
-			url = "/ListarProductoController";
+			url = "/Practica1_DT_FP/ListarProductoController";
 			
 		} catch (Exception e) {
 			url = "/JSPs/error.jsp";
