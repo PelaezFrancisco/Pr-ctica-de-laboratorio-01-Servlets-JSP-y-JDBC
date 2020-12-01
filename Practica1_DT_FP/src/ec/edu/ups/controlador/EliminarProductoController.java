@@ -38,7 +38,7 @@ public class EliminarProductoController extends HttpServlet {
 			producto.setProductoId(Integer.valueOf(request.getParameter("id")));			
 			productoDao.delete(producto);
 
-			url = "/private/admin/buscar_producto.jsp";
+			url = "/private/admin/inicio_admin.jsp";
 		} catch (Exception e) {
 			url = "/JSPs/error.jsp";
 		}

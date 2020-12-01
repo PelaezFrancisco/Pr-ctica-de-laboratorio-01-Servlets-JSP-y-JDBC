@@ -56,6 +56,7 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 
 	@Override
 	public Producto read2(String nombre) {
+		
 		Producto producto = null;
 		
 		ResultSet rs = conexion.query("SELECT * FROM GES_Productos WHERE pro_nombre='"+nombre+"'");
@@ -63,6 +64,7 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 		try {
 			
 			if (rs != null && rs.next()) {
+				
 				producto= new Producto(rs.getInt("pro_id"),rs.getString("pro_nombre"),rs.getString("pro_descripcion"),
 						rs.getInt("pro_stock"),rs.getDouble("pro_precioV"),rs.getInt("cat_id"),rs.getInt("emp_id"));
 			System.out.println(rs.getString("pro_nombre"));	
@@ -73,6 +75,8 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 		}
 		return producto;
 	}
+	
+	
 
 	@Override
 	public void update(Producto producto) {
@@ -126,6 +130,31 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 		return list;
 	}
 
-	
+	@Override
+	public List<Producto> busqueda(String nombre) {
+		List<Producto> productoB = new ArrayList<Producto>();
+		ResultSet rs=conexion.query("SELECT * FROM GES_Productos WHERE pro_nombre='"+nombre+"'");
+		System.out.println(nombre);
+		try {
+			if (rs != null && rs.next()) {
+				Producto producto = new Producto();
+				producto.setProductoId(rs.getInt("pro_id"));
+				producto.setProductoNombre(rs.getString("pro_nombre"));
+				producto.setProductoDescripcion(rs.getString("pro_descripcion"));
+				producto.setProductoStock(rs.getInt("pro_stock"));
+				producto.setProductoPrecioVenta(rs.getDouble("pro_precioV"));
+				producto.setCat_id(rs.getInt("cat_id"));
+				producto.setEmp_id(rs.getInt("emp_id"));
+				productoB.add(producto);
+			System.out.println(rs.getString("pro_nombre"));	
+			}else {
+				System.out.println("No se encontro el producto");
+			}
+		} catch (Exception e) {
+			e.getStackTrace();
+			System.out.println(">>>WARNING (JDBCPersonaDAO:read): " + e.getMessage());
+		}
+		return productoB;
+	}
 
 }

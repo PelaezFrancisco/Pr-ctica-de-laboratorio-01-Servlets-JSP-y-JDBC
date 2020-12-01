@@ -2,31 +2,49 @@ package ec.edu.ups.modelo;
 
 import java.util.Date;
 import java.io.Serializable;
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class PedidoCabecera implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private int pedidoCabeceraNumero;
-    private Date pedidoCabeceraFecha;
+    private LocalDateTime pedidoCabeceraFecha;
     private double pedidoCabeceraSubtotal;
     private double pedidoCabeceraIva;
     private double pedidoCabeceraDescuento;
     private double pedidoCabeceraTotal;
-    private String pedidoCabeceraEstado;
-    private Persona persona;
+    private char pedidoCabeceraEstado;
+    private int pedidoCabeceraPerI;
+    
+	private Persona persona;
     private List<PedidoDetalle> pedidoDetalle = new ArrayList<>();
     
+    
+	public PedidoCabecera() {
+		
+	}
+	public PedidoCabecera(int numP, LocalDateTime fecha, double subtotal, double iva, double desc, double total, char estado, int perId ) {
+		this.setPedidoCabeceraNumero(numP);
+		this.setPedidoCabeceraFecha(fecha);
+		this.setPedidoCabeceraSubtotal(subtotal);
+		this.setPedidoCabeceraIva(iva);
+		this.setPedidoCabeceraDescuento(desc);
+		this.setPedidoCabeceraTotal(total);
+		this.setPedidoCabeceraEstado(estado);
+		this.setPedidoCabeceraPerI(perId);
+	}
 	public int getPedidoCabeceraNumero() {
 		return pedidoCabeceraNumero;
 	}
 	public void setPedidoCabeceraNumero(int pedidoCabeceraNumero) {
 		this.pedidoCabeceraNumero = pedidoCabeceraNumero;
 	}
-	public Date getPedidoCabeceraFecha() {
+	public LocalDateTime getPedidoCabeceraFecha() {
 		return pedidoCabeceraFecha;
 	}
-	public void setPedidoCabeceraFecha(Date pedidoCabeceraFecha) {
+	public void setPedidoCabeceraFecha(LocalDateTime pedidoCabeceraFecha) {
 		this.pedidoCabeceraFecha = pedidoCabeceraFecha;
 	}
 	public double getPedidoCabeceraSubtotal() {
@@ -53,11 +71,17 @@ public class PedidoCabecera implements Serializable {
 	public void setPedidoCabeceraTotal(double pedidoCabeceraTotal) {
 		this.pedidoCabeceraTotal = pedidoCabeceraTotal;
 	}
-	public String getPedidoCabeceraEstado() {
+	public char getPedidoCabeceraEstado() {
 		return pedidoCabeceraEstado;
 	}
-	public void setPedidoCabeceraEstado(String pedidoCabeceraEstado) {
+	public void setPedidoCabeceraEstado(char pedidoCabeceraEstado) {
 		this.pedidoCabeceraEstado = pedidoCabeceraEstado;
+	}
+	public int getPedidoCabeceraPerI() {
+		return pedidoCabeceraPerI;
+	}
+	public void setPedidoCabeceraPerI(int pedidoCabeceraPerI) {
+		this.pedidoCabeceraPerI = pedidoCabeceraPerI;
 	}
 	public Persona getPersona() {
 		return persona;
@@ -71,4 +95,8 @@ public class PedidoCabecera implements Serializable {
 	public void setPedidoDetalle(List<PedidoDetalle> pedidoDetalle) {
 		this.pedidoDetalle = pedidoDetalle;
 	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }

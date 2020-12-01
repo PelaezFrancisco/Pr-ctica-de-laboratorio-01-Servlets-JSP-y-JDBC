@@ -33,6 +33,8 @@ public abstract class DAOFactory {
 	public abstract ProductoDAO getProductoDAO();
 	
 	public abstract EmpresaDAO getEmpresaDAO();
+
+	public abstract PedidoCabeceraDAO getPedidoCabeceraDAO();
 	
 
 }

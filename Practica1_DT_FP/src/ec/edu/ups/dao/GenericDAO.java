@@ -42,6 +42,8 @@ public interface GenericDAO<T, ID, EMAIL> {
 	public List<Producto> ProEmpPer();
 
 	public T  read2(String nombre);
+
+	public List<Producto> busqueda(String nombre);
 	
 	
 

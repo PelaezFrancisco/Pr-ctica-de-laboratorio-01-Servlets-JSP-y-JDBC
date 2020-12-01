@@ -139,4 +139,10 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer, String> imp
 		return null;
 	}
 
+	@Override
+	public List<Producto> busqueda(String nombre) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
