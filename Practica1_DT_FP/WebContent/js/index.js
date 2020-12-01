@@ -9,3 +9,9 @@ function sendpage(){
 	document.location.href = '/Practica1_DT_FP/IndexController?id='+e;
 	
 }
+
+function redirectSignIn(){
+	console.log("Entro a redirreccion");
+	document.location.href = '/public/IniciarSesion.html';
+	
+}

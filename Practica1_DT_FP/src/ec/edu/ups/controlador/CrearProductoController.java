@@ -54,6 +54,7 @@ public class CrearProductoController extends HttpServlet {
 			producto.setProductoDescripcion(request.getParameter("descrip"));
 			producto.setProductoStock(Integer.valueOf(request.getParameter("stock")));
 			producto.setProductoPrecioVenta(Double.parseDouble(request.getParameter("precioV")));
+			producto.setProductoImagen(null);
 			producto.setCat_id(Integer.valueOf(request.getParameter("categ")));
 			producto.setEmp_id(Integer.valueOf(request.getParameter("emp")));
 			productoDao.create(producto);	

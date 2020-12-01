@@ -11,7 +11,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException; 
 
 import ec.edu.ups.dao.DAOFactory;
+import ec.edu.ups.dao.EmpresaDAO;
 import ec.edu.ups.dao.PersonaDAO;
+import ec.edu.ups.modelo.Empresa;
 import ec.edu.ups.modelo.Persona;
 
 /**
@@ -21,7 +23,9 @@ import ec.edu.ups.modelo.Persona;
 public class IniciarSesionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PersonaDAO personaDao;
+	private EmpresaDAO empresaDao;
 	private Persona persona;
+	private Empresa empresa;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -29,8 +33,10 @@ public class IniciarSesionController extends HttpServlet {
         // TODO Auto-generated constructor stub
     	//Creamos el Dao Para Persona
     	personaDao = DAOFactory.getFactory().getPersonaDAO();
+    	empresaDao = DAOFactory.getFactory().getEmpresaDAO();
     	System.out.println("Creacion de persona");
 		persona = new Persona();
+		empresa = new Empresa();
     }
 
 
@@ -60,7 +66,7 @@ public class IniciarSesionController extends HttpServlet {
 			}
 			
 			
-			request.setAttribute("persona", persona);
+			//request.setAttribute("persona", persona);
 			
 			
 			
@@ -80,6 +86,9 @@ public class IniciarSesionController extends HttpServlet {
 			}else {
 				url = "/public/IniciarSesion.html";
 			}
+			
+			empresa = empresaDao.read(persona.getId());
+			request.setAttribute("empresa", empresa);
 			
 		} catch (Exception e) {
 			System.out.println("ERROR DE INICIO DE SESION");

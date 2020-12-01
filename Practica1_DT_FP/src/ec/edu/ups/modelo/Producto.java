@@ -10,22 +10,25 @@ public class Producto implements Serializable {
     private String productoDescripcion; 
     private int productoStock;
     private double productoPrecioVenta;
+    private String productoImagen;
     private Categoria categoria;
     private Empresa empresa;
     private int cat_id;
     private int emp_id;
+    
     
 
 	public Producto() {
 		
 		// TODO Auto-generated constructor stub
 	}
-    public Producto(int productoId, String productoNombre, String productoDescripcion, int productoStock, double productoPrecioVenta, int cat_id, int emp_id) {
+    public Producto(int productoId, String productoNombre, String productoDescripcion, int productoStock, double productoPrecioVenta, String productoImagen, int cat_id, int emp_id) {
 		this.setProductoId(productoId);
 		this.setProductoNombre(productoNombre);
 		this.setProductoDescripcion(productoDescripcion);
 		this.setProductoStock(productoStock);
 		this.setProductoPrecioVenta(productoPrecioVenta);
+		this.setProductoImagen(productoImagen);
 		this.setCat_id(cat_id);
 		this.setEmp_id(emp_id);
 	}
@@ -86,6 +89,12 @@ public class Producto implements Serializable {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public String getProductoImagen() {
+		return productoImagen;
+	}
+	public void setProductoImagen(String productoImagen) {
+		this.productoImagen = productoImagen;
 	}
 	
 	

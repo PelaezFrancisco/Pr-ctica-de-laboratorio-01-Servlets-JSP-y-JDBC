@@ -41,7 +41,9 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, Integer, String> imp
 		 * EJECUCION DE QUERY PERSONA SE GUARDA EL OBJETO PERSONA
 		 */
 		try {
-			if (rs_3 != null && rs_3.next()) {
+			
+			while (rs_3.next()) {
+				//System.out.println("veces que entra"+1);
 				Persona persona_aux = new Persona();
 				persona_aux.setId(rs_3.getInt("per_id"));
 				persona_aux.setNombre(rs_3.getString("per_nombre"));
@@ -53,8 +55,9 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, Integer, String> imp
 				persona_aux.setTelefono(rs_3.getString("per_telefono"));
 				//Se guarda en el arraylist
 				personas.add(persona_aux);
+				
 			}
-		} catch (Exception e) {
+					} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(">>>ERROR EN EL QUERY DE PERSONA");
 		}finally {
@@ -74,15 +77,17 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, Integer, String> imp
 		//QUERY PARA CATEGORIAS
 		ResultSet rs_2 = conexion.query("SELECT * from GES_CATEGORIAS");
 		try {
-			if (rs_2 != null && rs_2.next()) {
-				Categoria categoria_aux = new Categoria();
-				categoria_aux.setCategoriaId(rs_2.getInt("cat_id"));
-				categoria_aux.setCategoriaNombre(rs_2.getString("cat_nombre"));
-				categoria_aux.setCategoriaDescripcion(rs_2.getString("cat_descripcion"));
-				
-				//Se guarda en el arraylist
-				categorias.add(categoria_aux);
-			}
+				while (rs_2.next()) {
+					Categoria categoria_aux = new Categoria();
+					categoria_aux.setCategoriaId(rs_2.getInt("cat_id"));
+					categoria_aux.setCategoriaNombre(rs_2.getString("cat_nombre"));
+					categoria_aux.setCategoriaDescripcion(rs_2.getString("cat_descripcion"));
+					
+					//Se guarda en el arraylist
+					categorias.add(categoria_aux);	
+				}
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(">>ERROR EN QUERY A CATEGORIAS");
@@ -102,12 +107,14 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, Integer, String> imp
 		ResultSet rs_1 = conexion.query("SELECT * from GES_Productos pr, GES_Empresas em "
 				+ "WHERE pr.emp_id ="+id+" AND em.emp_id="+id);
 		try {
-			if (rs_1 != null && rs_1.next()) {
+			while (rs_1.next()) {
 				Producto producto_aux = new Producto();
 				producto_aux.setProductoId(rs_1.getInt("pro_id"));
+				System.out.println("Producto recogido"+rs_1.getInt("pro_id"));
 				producto_aux.setProductoNombre(rs_1.getString("pro_nombre"));
 				producto_aux.setProductoDescripcion(rs_1.getString("pro_descripcion"));
 				producto_aux.setProductoPrecioVenta(rs_1.getDouble("pro_precioV"));
+				producto_aux.setProductoImagen(rs_1.getString("pro_imagen"));
 				producto_aux.setProductoStock(rs_1.getInt("pro_stock"));
 				int idcat=rs_1.getInt("cat_id");
 				
@@ -119,7 +126,9 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, Integer, String> imp
 				}
 				//Se guarda en el arraylist
 				productos.add(producto_aux);
+				
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(">>ERROR EN QUERY A PRODUCTOS");
@@ -131,6 +140,11 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, Integer, String> imp
 				e.printStackTrace();
 			}
 		}
+		System.out.println("tamano de array= "+productos.size());
+		for (int i = 0; i < productos.size(); i++) {
+			System.out.println("Producto id= "+productos.get(i).getProductoId());
+		}
+		
 		/*
 		 * EJECUCION DE QURY EMPRESA SE GUARDA EL OBJETO EMPRESA
 		 */
