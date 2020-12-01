@@ -33,8 +33,9 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="public/IniciarSesion.html">Iniciar Sesion</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#empresas">Empresas</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Acerca De</a></li>
+                    
                 </ul>
             </div>
         </div>
@@ -45,7 +46,7 @@
             <!-- Masthead Avatar Image-->
             <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="" />
             <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
+            <h1 class="masthead-heading text-uppercase mb-0">Bienvenido a TiPe!</h1>
             <!-- Icon Divider-->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
@@ -55,32 +56,27 @@
         </div>
     </header>
     <!-- Portfolio Section-->
-    <section class="page-section portfolio" id="portfolio">
+    <section class="page-section portfolio" id="empresas">
         <div class="container">
             <!-- Portfolio Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Empresas</h2>
+            <h2 class="titulo_empresa">Empresas Disponibles</h2>
             <div class="formulario">
 	            <div class="datos">
-		                <select id="items" name="emp">
-	                        <option value="1">Norma</option>
-	                        <option value="2">Nestle</option>
-	                        <option value="3">Coca Cola</option>
-	                        <option value="4">Colgate</option>
-	                        <option value="5">L'Oreal</option>
-	                        <option value="6">Samsung</option>
-	                        <option value="7">Apple Inc</option>
-	                        <option value="8">TVentas</option>
-	                        <option value="9">Jugeton</option>
-	                    </select onchange="sendpage()"><br><br>
+		                <select class="select_empresa" id="items" name="emp" onchange="sendpage()">
+		                	<option value="1" class="opcion_empresa">-- Seleccione --</option>
+	                        <option value="1" class="opcion_empresa">Norma</option>
+	                        <option value="2" class="opcion_empresa">Nestle</option>
+	                        <option value="3" class="opcion_empresa">Coca Cola</option>
+	                        <option value="4" class="opcion_empresa">Colgate</option>
+	                        <option value="5" class="opcion_empresa">L-Oreal</option>
+	                        <option value="6" class="opcion_empresa">Samsung</option>
+	                        <option value="7" class="opcion_empresa">Apple Inc</option>
+	                        <option value="8" class="opcion_empresa">TVentas</option>
+	                        <option value="9" class="opcion_empresa">Jugeton</option>
+	                    </select><br><br>
 		        </div>
             </div>
-            <!-- Icon Divider-->
-            <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Productos</h2>
+            
             <!-- Icon Divider-->
             <c:set var="obj_empresa" scope="request" value="${empresa}" />
             <div class="divider-custom">
@@ -88,13 +84,16 @@
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">${obj_empresa.empresaNombre}</h2>
+            <h3 class="nombre_empresa">Empresa: ${obj_empresa.empresaNombre}</h3>
             <!-- Icon Divider-->
-            <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
+           <!-- Icon Divider-->
+            <div class="divider-custom" style="margin-bottom: -40px">
+                <div class="divider-custom-line" style="position: relative; top: -40px"></div>
+                <div class="divider-custom-icon" style="position: relative; top: -40px"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line" style="position: relative; top: -40px"></div>
             </div>
+            <h2 class="titulo_productos">Productos</h2>
+            <hr>
             <!-- Portfolio Grid Items-->
             <!-- 
             
@@ -102,19 +101,19 @@
             
              -->
             <div class="row justify-content-center">
-
-                <!-- Portfolio Item 1-->
-                <div class="col-md-6 col-lg-4 mb-5">
-                    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                            <c:forEach var="pro" items="${lista}">
-                            
-                            </c:forEach>
-				        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="" />
-                    </div>
-                </div>
+			<c:set var="list_productos" scope="request" value="${empresa.producto}" />
+                	<!-- Portfolio Item 1-->
+	                <div class="col-md-6 col-lg-4 mb-5">
+	                    <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+	                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+	                            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+	                            
+					        </div>
+	                        <img class="img-fluid" src="images/billar.jpg" alt="" />
+	                    </div>
+	                </div>  
+               
+                
                 <!-- Portfolio Item 2-->
                 <div class="col-md-6 col-lg-4 mb-5">
                     <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
@@ -167,7 +166,7 @@
     <section class="page-section bg-primary text-white mb-0" id="about">
         <div class="container">
             <!-- About Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-white">Acerca de Nosotros</h2>
             <!-- Icon Divider-->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
@@ -177,70 +176,13 @@
             <!-- About Section Content-->
             <div class="row">
                 <div class="col-lg-4 ml-auto">
-                    <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p>
+                    <p class="lead">Somos una pequeña empresa encargada de Gestionar la Funciones de pedidos de las empresas.</p>
                 </div>
                 <div class="col-lg-4 mr-auto">
-                    <p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p>
+                    <p class="lead">Nuestro trabajo es siempre garantizar el profesionalismo y seguridad de nuestra plataforma</p>
                 </div>
             </div>
             <!-- About Section Button-->
-            <div class="text-center mt-4">
-                <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
-                    <i class="fas fa-download mr-2"></i> Free Download!
-                </a>
-            </div>
-        </div>
-    </section>
-    <!-- Contact Section-->
-    <section class="page-section" id="contact">
-        <div class="container">
-            <!-- Contact Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
-            <!-- Icon Divider-->
-            <div class="divider-custom">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-            </div>
-            <!-- Contact Section Form-->
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                    <form id="contactForm" name="sentMessage" novalidate="novalidate">
-                        <div class="control-group">
-                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                <label>Name</label>
-                                <input class="form-control" id="name" type="text" placeholder="Name" required="required" data-validation-required-message="Please enter your name." />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                <label>Email Address</label>
-                                <input class="form-control" id="email" type="email" placeholder="Email Address" required="required" data-validation-required-message="Please enter your email address." />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                <label>Phone Number</label>
-                                <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required="required" data-validation-required-message="Please enter your phone number." />
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                <label>Message</label>
-                                <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required" data-validation-required-message="Please enter a message."></textarea>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <br />
-                        <div id="success"></div>
-                        <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton" type="submit">Send</button></div>
-                    </form>
-                </div>
-            </div>
         </div>
     </section>
     <!-- Footer-->
@@ -295,7 +237,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <!-- Portfolio Modal - Title-->
-                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal1Label">Log Cabin</h2>
+                                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal1Label">${empresa.producto[0].productoNombre}</h2>
                                 <!-- Icon Divider-->
                                 <div class="divider-custom">
                                     <div class="divider-custom-line"></div>
@@ -303,7 +245,7 @@
                                     <div class="divider-custom-line"></div>
                                 </div>
                                 <!-- Portfolio Modal - Image-->
-                                <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cabin.png" alt="" />
+                                <img class="img-fluid rounded mb-5" src="images/billar.jpg" alt="" />
                                 <!-- Portfolio Modal - Text-->
                                 <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur
                                     itaque. Nam.</p>
@@ -502,8 +444,8 @@
     <script src="assets/mail/jqBootstrapValidation.js"></script>
     <script src="assets/mail/contact_me.js"></script>
     <!-- Core theme JS-->
-    <script src="../js/scripts.js"></script>
-     <script src="../js/index.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
