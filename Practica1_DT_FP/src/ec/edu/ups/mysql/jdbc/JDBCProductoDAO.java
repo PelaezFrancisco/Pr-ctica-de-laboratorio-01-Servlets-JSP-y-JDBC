@@ -72,7 +72,7 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 		try {
 			while(rs.next()) {
 				list.add(new Producto(rs.getInt("pro_id"), rs.getString("pro_nombre"), rs.getString("pro_descripcion"),
-						rs.getInt("pro_stock"), rs.getDouble("pro_precioV"),rs.getInt("cat_id"), rs.getInt("emp_id")));
+						rs.getInt("pro_stock"), rs.getDouble("pro_precioV"), rs.getString("pro_imagen"),rs.getInt("cat_id"), rs.getInt("emp_id")));
 			}
 		}catch (SQLException e) {
 			System.out.println(">>>WARNING (JDBCPersonaDAO:find): " + e.getMessage());
