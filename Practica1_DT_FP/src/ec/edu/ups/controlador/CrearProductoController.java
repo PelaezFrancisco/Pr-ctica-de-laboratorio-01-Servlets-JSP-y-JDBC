@@ -49,7 +49,7 @@ public class CrearProductoController extends HttpServlet {
 		String url = null;
 		System.out.println("categorio= "+request.getParameter("categ"));
 		try {
-			producto.setProductoId(Integer.valueOf(request.getParameter("id")));
+			//producto.setProductoId(Integer.valueOf(request.getParameter("id")));
 			producto.setProductoNombre(request.getParameter("nombre"));
 			producto.setProductoDescripcion(request.getParameter("descrip"));
 			producto.setProductoStock(Integer.valueOf(request.getParameter("stock")));
@@ -57,7 +57,7 @@ public class CrearProductoController extends HttpServlet {
 			producto.setCat_id(Integer.valueOf(request.getParameter("categ")));
 			producto.setEmp_id(Integer.valueOf(request.getParameter("emp")));
 			productoDao.create(producto);	
-			url="/index.html" ;
+			url="/private/admin/inicio_admin.jsp" ;
 			
 		} catch (Exception e) {
 			e.printStackTrace();

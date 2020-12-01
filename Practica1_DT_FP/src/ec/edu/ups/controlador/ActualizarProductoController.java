@@ -42,7 +42,7 @@ public class ActualizarProductoController extends HttpServlet {
 			listaProducto = productoDao.ProEmpPer();
 			System.out.println("Tamaño de la Lista: " + listaProducto.size());
 			request.setAttribute("productos", listaProducto);
-			url = "/JSPs/actualizar_productos.jsp";
+			url = "/private/admin/actualizar_productos.jsp";
 		} catch (Exception e) {
 			url = "/JSPs/error.jsp";
 		}

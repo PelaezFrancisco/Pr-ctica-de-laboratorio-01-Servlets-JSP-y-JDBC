@@ -2,6 +2,7 @@ package ec.edu.ups.dao;
 
 import ec.edu.ups.mysql.jdbc.JDBCPersonaDAO;
 import ec.edu.ups.mysql.jdbc.JDBCProductoDAO;
+import ec.edu.ups.mysql.jdbc.JDBCEmpresaDAO;
 /**
  * Clase JDBCGenericDAO.
  * 
@@ -35,6 +36,12 @@ public class JDBCDAOFactory extends DAOFactory {
 	public ProductoDAO getProductoDAO() {
 		// TODO Auto-generated method stub
 		return new JDBCProductoDAO();
+	}
+
+	@Override
+	public EmpresaDAO getEmpresaDAO() {
+		// TODO Auto-generated method stub
+		return new JDBCEmpresaDAO();
 	}	
 
 }

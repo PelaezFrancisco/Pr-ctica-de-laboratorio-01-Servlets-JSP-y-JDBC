@@ -23,7 +23,7 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 	public void create(Producto producto) {
 		// TODO Auto-generated method stub
 		try {
-			conexion.update("INSERT GES_Productos VALUES (" + producto.getProductoId() + ", '" + producto.getProductoNombre() + "', '" 
+			conexion.update("INSERT GES_Productos VALUES ( default " + ", '" + producto.getProductoNombre() + "', '" 
 					+producto.getProductoDescripcion() + "',"+producto.getProductoStock()+ ", " 
 					+producto.getProductoPrecioVenta()+ ", " +producto.getCat_id()+ ", " 
 					+producto.getEmp_id()+ ")");

@@ -1,26 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Index Administrador</title>
+    <title>Practica 1 Juan Francisco Pelaez </title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/ ">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="stylesheet" type="text/css" href="css/styles.css"/> 
-
-    <link rel="stylesheet" type="text/css" href="../../css/styles.css" />
-    
+    <link href="css/styles.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -34,12 +32,9 @@
                 </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="private/admin/CrearProducto.html">Agregar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ActualizarProducto">Modificar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="BuscarProductos.html">Buscar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListarProductoController">Listar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index1.html">Cerrar Sesion</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="public/IniciarSesion.html">Iniciar Sesion</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -48,7 +43,7 @@
     <header class="masthead bg-primary text-white text-center">
         <div class="container d-flex align-items-center flex-column">
             <!-- Masthead Avatar Image-->
-            <img class="masthead-avatar mb-5" src="../assets/img/avataaars.svg" alt="" />
+            <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="" />
             <!-- Masthead Heading-->
             <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
             <!-- Icon Divider-->
@@ -57,15 +52,43 @@
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
-            <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
         </div>
     </header>
     <!-- Portfolio Section-->
     <section class="page-section portfolio" id="portfolio">
         <div class="container">
             <!-- Portfolio Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Empresas</h2>
+            <div class="formulario">
+	            <div class="datos">
+		                <select id="items" name="emp">
+	                        <option value="1">Norma</option>
+	                        <option value="2">Nestle</option>
+	                        <option value="3">Coca Cola</option>
+	                        <option value="4">Colgate</option>
+	                        <option value="5">L'Oreal</option>
+	                        <option value="6">Samsung</option>
+	                        <option value="7">Apple Inc</option>
+	                        <option value="8">TVentas</option>
+	                        <option value="9">Jugeton</option>
+	                    </select onchange="sendpage()"><br><br>
+		        </div>
+            </div>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Productos</h2>
+            <!-- Icon Divider-->
+            <c:set var="obj_empresa" scope="request" value="${empresa}" />
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">${obj_empresa.empresaNombre}</h2>
             <!-- Icon Divider-->
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -73,13 +96,22 @@
                 <div class="divider-custom-line"></div>
             </div>
             <!-- Portfolio Grid Items-->
+            <!-- 
+            
+            PRODUCTOS
+            
+             -->
             <div class="row justify-content-center">
+
                 <!-- Portfolio Item 1-->
                 <div class="col-md-6 col-lg-4 mb-5">
                     <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
+                            <c:forEach var="pro" items="${lista}">
+                            
+                            </c:forEach>
+				        </div>
                         <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="" />
                     </div>
                 </div>
@@ -467,10 +499,11 @@
     <!-- Third party plugin JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <!-- Contact form JS-->
-    <script src="../../assets/mail/jqBootstrapValidation.js"></script>
-    <script src="../../assets/mail/contact_me.js"></script>
+    <script src="assets/mail/jqBootstrapValidation.js"></script>
+    <script src="assets/mail/contact_me.js"></script>
     <!-- Core theme JS-->
-    <script src="../../js/scripts.js"></script>
+    <script src="../js/scripts.js"></script>
+     <script src="../js/index.js"></script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ListarProductos</title>
+    <title>ModificarProductos</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/listar.css" rel="stylesheet" type="text/css" />
+    <link href="css/listar.css" rel="stylesheet" type="text/css" /> 
 
 </head>
 
@@ -24,9 +24,9 @@
     <header class="masthead bg-primary text-white text-center">
         <div class="container d-flex align-items-center flex-column">
             <!-- Masthead Avatar Image-->
-            <img class="masthead-avatar mb-5" src="../assets/img/portfolio/lista.png" alt="" />
+            <img class="masthead-avatar mb-5" src="assets/img/portfolio/update.png" alt="" />
             <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Listar Productos</h1>
+            <h1 class="masthead-heading text-uppercase mb-0">Modificar Productos</h1>
             <!-- Icon Divider-->
         </div>
     </header>
@@ -40,12 +40,11 @@
 
                 <ul class="navbar-nav ml-auto">
 
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="IndexAdmin.html">Pagina Principal</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/inicio_admin.jsp">Pagina Principal</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="CrearProducto.html">Agregar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="">Modificar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ActualizarProducto">Modificar Productos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="BuscarProductos.html">Buscar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="">Listar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="ListarProductos.html">Listar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListarProductoController">Listar Productos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index1.html">Cerrar Sesion</a></li>
                 </ul>
             </div>
@@ -80,7 +79,7 @@
         <div class="form">
             <div class="datos">
                 <form id="formulario01" method="POST" action="/Practica1_DT_FP/ModificarProductoController">
-                    <label>Codigo el Codigo del Producto a Modificar</label><br><br>
+                    <label>Codigo del Producto a Modificar</label><br><br>
                     <input type="text" id="id" name="id" value="" placeholder="Ingrese el Codigo ..." />
                     <br><br>
                     <label>Nombre del Producto</label><br><br>
