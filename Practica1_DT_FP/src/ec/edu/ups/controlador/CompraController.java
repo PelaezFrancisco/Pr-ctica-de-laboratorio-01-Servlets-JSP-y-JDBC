@@ -32,8 +32,16 @@ public class CompraController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String url = null;
+		try {
+			listaProducto = productoDao.find();
+			System.out.println("Tamaño de la Lista: " + listaProducto.size());
+			request.setAttribute("productos", listaProducto);
+			url = "/private/admin/listar_productos.jsp";
+		} catch (Exception e) {
+			url = "/JSPs/error.jsp";
+		}
+		getServletContext().getRequestDispatcher(url).forward(request, response);
 	}
 
 	/**
