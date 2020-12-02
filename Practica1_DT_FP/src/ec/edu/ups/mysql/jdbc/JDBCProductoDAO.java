@@ -115,16 +115,34 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 	}
 	
 	@Override
-	public List<Producto> ProEmpPer(int ID) {
-		List<Producto> list = new ArrayList<Producto>();
-		ResultSet rs= conexion.query("Select * from ges_personas p, ges_empresas e, ges_productos pro where p.per_id="+ ID+ " and p.emp_id=e.emp_id And pro.emp_id= e.emp_id;");
+	public ArrayList<Producto> ProEmpPer(int id) {
+		ArrayList<Producto> list = new ArrayList<Producto>();
+		ResultSet rs = null;
 		try {
-			while(rs.next()) {
-				list.add(new Producto(rs.getInt("pro_id"), rs.getString("pro_nombre"), rs.getString("pro_descripcion"),
-						rs.getInt("pro_stock"), rs.getDouble("pro_precioV"),rs.getString("pro_imagen"),rs.getInt("cat_id"), rs.getInt("emp_id")));
+			rs = conexion.query("SELECT * from ges_personas p, ges_empresas e, ges_productos pro where p.per_id="+ id+ " and p.emp_id=e.emp_id And pro.emp_id= e.emp_id");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		
+		try {	
+			while(rs.next()){
+				Producto pro = new Producto();
+				pro.setProductoId(rs.getInt("pro_id"));
+				pro.setProductoNombre(rs.getString("pro_nombre"));
+				pro.setProductoDescripcion(rs.getString("pro_descripcion"));
+				pro.setProductoPrecioVenta(rs.getDouble("pro_precioV"));
+				pro.setProductoStock(rs.getInt("pro_stock"));
+				pro.setCat_id(rs.getInt("cat_id"));
+				pro.setProductoImagen(rs.getString("pro_imagen"));
+				pro.setEmp_id(rs.getInt("emp_id"));
+				
+				System.out.println("Producto de compra= "+rs.getString("pro_nombre"));
+				list.add(pro);
 			}
-		}catch (SQLException e) {
-			System.out.println(">>>WARNING (JDBCPersonaDAO:find): " + e.getMessage());
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 		return list;
 	}

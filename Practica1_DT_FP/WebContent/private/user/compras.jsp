@@ -14,7 +14,7 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
-    <script src="js/index.js"></script>
+    <script src="js/compra.js"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
@@ -47,7 +47,7 @@
             <!-- Masthead Avatar Image-->
             <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="" />
             <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Bienvenido a TiPe!</h1>
+            <h1 class="masthead-heading text-uppercase mb-0">Compra de Productos</h1>
             <!-- Icon Divider-->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
@@ -58,72 +58,51 @@
     </header>
     <!-- Portfolio Section-->
     <section class="page-section portfolio" id="empresas">
-        <div class="container">
-            <!-- Portfolio Section Heading-->
-            <h2 class="titulo_empresa">Empresas Disponibles</h2>
-            <div class="formulario">
-	            <div class="datos">
-		                <select class="select_empresa" id="items" name="emp" onchange="sendpage()">
-		                	<option value="1" class="opcion_empresa">-- Seleccione --</option>
-	                        <option value="1" class="opcion_empresa">Norma</option>
-	                        <option value="2" class="opcion_empresa">Nestle</option>
-	                        <option value="3" class="opcion_empresa">Coca Cola</option>
-	                        <option value="4" class="opcion_empresa">Colgate</option>
-	                        <option value="5" class="opcion_empresa">L-Oreal</option>
-	                        <option value="6" class="opcion_empresa">Samsung</option>
-	                        <option value="7" class="opcion_empresa">Apple Inc</option>
-	                        <option value="8" class="opcion_empresa">TVentas</option>
-	                        <option value="9" class="opcion_empresa">Jugeton</option>
-	                    </select><br><br>
-		        </div>
-            </div>
             
-            <!-- Icon Divider-->
-            <c:set var="obj_empresa" scope="request" value="${empresa}" />
-            <div class="divider-custom">
+            <h2 class="titulo_productos">Productos</h2>
+            <hr>
+             <!-- Icon Divider-->
+            <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
-            <h3 class="nombre_empresa">Empresa: ${obj_empresa.empresaNombre}</h3>
-            <!-- Icon Divider-->
-           <!-- Icon Divider-->
-            <div class="divider-custom" style="margin-bottom: -40px">
-                <div class="divider-custom-line" style="position: relative; top: -40px"></div>
-                <div class="divider-custom-icon" style="position: relative; top: -40px"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line" style="position: relative; top: -40px"></div>
-            </div>
-            <h2 class="titulo_productos">Productos</h2>
-            <hr>
             <!-- Portfolio Grid Items-->
             <!-- 
             
             PRODUCTOS
             
              -->
+             <form onsubmit="red()">
             <div class="row justify-content-center">
-			<c:set var="list_productos" scope="request" value="${empresa.producto}" />
-			<script type="text/javascript">
-			function redirectSignIn(){
-				console.log("Entro a redirreccion");
-				document.location.href = 'public/IniciarSesion.html';
-				
-			}
-			</script>
+			<script type="text/javascript"></script>
 			
-			<c:forEach var="pro" items="${list_productos}">
-       			<!-- Portfolio Item 1-->
-	                <div class="col-md-6 col-lg-4 mb-5" onclick="redirectSignIn()">
-	                    <div class="portfolio-item mx-auto" data-toggle="modal" >
-	                            <div class="portfolio-item-caption-content text-center text-white"></div>
-	                        <img class="img-fluid" style="width: 400px; height: 280px" src="${pro.productoImagen}" alt="" />
-	                        <h3 style="text-align: center">${pro.productoNombre}</h3>
-	                        <p style="text-align: center">${pro.productoDescripcion}</p>
-	                    </div>
-	                </div>  
-        	</c:forEach>
+			
+			<input type="hidden" id="empresaId" name="emp" value="${productos.get(0).emp_id}">
+				<c:forEach var="pro" items="${productos}">
+	       			<!-- Portfolio Item 1-->
+	       				<script>countPro($pro.productoId);</script>
+		                <div class="col-md-6 col-lg-4 mb-5">
+		                    <div class="portfolio-item mx-auto" data-toggle="modal" >
+		                            <div class="portfolio-item-caption-content text-center text-white"></div>
+		                        <img class="img-fluid" style="width: 400px; height: 280px" src="${pro.productoImagen}" alt="" />
+		                        <h3 id="producto${pro.productoId}" style="text-align: center">${pro.productoNombre}</h3>
+		                        <p style="text-align: center">${pro.productoDescripcion}</p>
+		                        <p style="text-align: center">Precio: $ ${pro.productoPrecioVenta}</p>
+		                        <div style="text-align: center">
+		                        	<input type="number" id="cant${pro.productoId}" name="cant${pro.productoId}" min="0" max="${pro.productoStock}">
+		                        </div>
+		                       	
+		                    </div>
+		                </div> 
+	        	</c:forEach>
+        	
+        	
+			
         	</div>
-        </div>
+        	<input type="submit" value="Submit">
+        	</form>
+       
     </section>
     <!-- About Section-->
     <section class="page-section bg-primary text-white mb-0" id="about">

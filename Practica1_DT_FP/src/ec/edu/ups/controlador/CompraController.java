@@ -1,6 +1,7 @@
 package ec.edu.ups.controlador;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -20,7 +21,7 @@ import ec.edu.ups.modelo.Producto;
 public class CompraController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductoDAO productoDao;
-	private List<Producto>listaProducto;
+	private ArrayList<Producto>listaProducto = new ArrayList<Producto>();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -33,14 +34,18 @@ public class CompraController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = null;
+		int id = Integer.parseInt(request.getParameter("id"));
 		try {
-			listaProducto = productoDao.find();
-			System.out.println("Tamaño de la Lista: " + listaProducto.size());
+			System.out.println("El id que manda a PorEmpPer"+id);
+			listaProducto = (ArrayList<Producto>) productoDao.ProEmpPer(id);
+			System.out.println("Tamaño de la Lista Productos: " + listaProducto.size());
 			request.setAttribute("productos", listaProducto);
-			url = "/private/admin/listar_productos.jsp";
+			url = "/private/user/compras.jsp";
 		} catch (Exception e) {
+			e.printStackTrace();
 			url = "/JSPs/error.jsp";
 		}
+		
 		getServletContext().getRequestDispatcher(url).forward(request, response);
 	}
 
