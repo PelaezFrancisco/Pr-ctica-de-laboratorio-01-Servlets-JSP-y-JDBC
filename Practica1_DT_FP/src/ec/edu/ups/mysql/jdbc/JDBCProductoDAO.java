@@ -26,7 +26,7 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 			conexion.update("INSERT GES_Productos VALUES ( default " + ", '" + producto.getProductoNombre() + "', '" 
 					+producto.getProductoDescripcion() + "',"+producto.getProductoStock()+ ", " 
 					+producto.getProductoPrecioVenta()+ ", " +producto.getCat_id()+ ", " 
-					+producto.getEmp_id()+ ")");
+					+producto.getEmp_id()+", '"+producto.getProductoImagen()+"')");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

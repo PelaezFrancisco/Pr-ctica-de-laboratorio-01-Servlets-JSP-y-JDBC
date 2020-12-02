@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    
     <header class="masthead bg-primary text-white text-center">
         <div class="container d-flex align-items-center flex-column">
             <!-- Masthead Avatar Image-->
@@ -52,7 +53,7 @@
     <section>
         <div class="form">
             <div class="datos">
-                <form id="formulario01" method="POST" action="/Practica1_DT_FP/CrearProductoController">
+                <form id="formulario01" method="POST" action="/Practica1_DT_FP/CrearProductoController" enctype="multipart/form-data">
                     <!-- <label>Codigo del Producto</label><br><br>
                     <input type="text" id="id" name="id" value="" placeholder="Ingrese el Codigo ..." />
                     <br><br> -->
@@ -92,6 +93,15 @@
                         <option value="8">TVentas</option>
                         <option value="9">Jugueton</option>
                     </datalist><br><br>
+                    <br>
+                    <label>Seleccione la Imagen:</label><br><br>
+                    
+                    <!--
+                     <input type="file" name="imagen">
+                    -->
+                    <input type="text" name="imagen" id="imagen"/>
+                    
+                    <br><br><br>
                     <!--  
                     <label>Categoria del Producto</label><br><br>
                     <input type="text" id="categ" name="categ" value="" placeholder="Precio Venta Publico ..." />
