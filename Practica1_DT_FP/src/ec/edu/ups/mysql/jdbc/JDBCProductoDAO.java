@@ -114,11 +114,10 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 		return null;
 	}
 	
-
 	@Override
-	public List<Producto> ProEmpPer() {
+	public List<Producto> ProEmpPer(int ID) {
 		List<Producto> list = new ArrayList<Producto>();
-		ResultSet rs= conexion.query("select  * from GES_Productos pro ,GES_Empresas e, GES_Personas per  Where pro.emp_id = e.emp_id AND per.emp_id = e.emp_id");
+		ResultSet rs= conexion.query("Select * from ges_personas p, ges_empresas e, ges_productos pro where p.per_id="+ ID+ " and p.emp_id=e.emp_id And pro.emp_id= e.emp_id;");
 		try {
 			while(rs.next()) {
 				list.add(new Producto(rs.getInt("pro_id"), rs.getString("pro_nombre"), rs.getString("pro_descripcion"),

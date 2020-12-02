@@ -63,6 +63,12 @@
             <p class="masthead-subheading font-weight-light mb-0">Perfil de Administrador de ${empresa.empresaNombre}</p>
         </div>
     </header>
+    <form method="GET" action="/Practica1_DT_FP/ListarProductoController" >
+        <div style="display: none">
+        <input type="text" id="id" name="id" value="${empresa.persona.get(0).id}"/>
+		
+		</div> <input type="submit" id="login" name="login" value="Buscar" />
+    </form>
     <!-- Portfolio Section-->
     <section class="page-section portfolio" id="portfolio">
         <div class="container">

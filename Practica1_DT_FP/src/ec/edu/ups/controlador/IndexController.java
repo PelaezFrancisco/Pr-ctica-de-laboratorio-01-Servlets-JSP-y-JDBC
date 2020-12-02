@@ -43,6 +43,9 @@ public class IndexController extends HttpServlet {
 		try {
 			id = Integer.parseInt(request.getParameter("id"));
 			empresa = empresaDAO.read(id);
+			if (empresa== null) {
+				System.out.println("empresa null");
+			}
 			request.setAttribute("empresa", empresa);
 			url = "/public/index.jsp";
 			System.out.println("Index controller funciono correctamente");

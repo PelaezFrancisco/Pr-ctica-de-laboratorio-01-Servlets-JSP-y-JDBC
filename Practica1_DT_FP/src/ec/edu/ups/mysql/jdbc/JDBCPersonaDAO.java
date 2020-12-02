@@ -128,12 +128,6 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer, String> imp
 	}
 
 	@Override
-	public List<Producto> ProEmpPer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Persona read2(String nombre) {
 		// TODO Auto-generated method stub
 		return null;
@@ -141,6 +135,12 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer, String> imp
 
 	@Override
 	public List<Producto> busqueda(String nombre) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Producto> ProEmpPer(int ID) {
 		// TODO Auto-generated method stub
 		return null;
 	}

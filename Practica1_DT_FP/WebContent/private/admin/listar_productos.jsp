@@ -28,6 +28,8 @@
             <!-- Masthead Heading-->
             <h1 class="masthead-heading text-uppercase mb-0">Listar Productos</h1>
             <!-- Icon Divider-->
+            <!-- Masthead Subheading-->
+            <p class="masthead-subheading font-weight-light mb-0">Perfil de Administrador de ${empresa.empresaNombre}</p>
         </div>
     </header>
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
