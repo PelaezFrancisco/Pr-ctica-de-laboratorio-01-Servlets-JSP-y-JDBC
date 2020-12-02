@@ -39,11 +39,11 @@ public interface GenericDAO<T, ID, EMAIL> {
 
 	public T find_email(EMAIL email);
 
-	public List<Producto> ProEmpPer();
-
 	public T  read2(String nombre);
 
 	public List<Producto> busqueda(String nombre);
+
+	public List<Producto> ProEmpPer(int ID);
 	
 	
 
