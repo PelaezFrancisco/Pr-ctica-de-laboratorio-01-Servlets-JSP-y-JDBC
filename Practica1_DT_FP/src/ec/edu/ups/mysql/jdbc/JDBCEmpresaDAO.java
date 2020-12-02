@@ -35,8 +35,7 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, Integer, String> imp
 		
 		
 		//QUERY PARA PERSONAS
-		ResultSet rs_3 = conexion.query("SELECT * from GES_Personas pe, GES_Empresas em "
-				+ "WHERE pe.emp_id ="+id+" AND em.emp_id="+id);
+		ResultSet rs_3 = conexion.query("select * from ges_personas p, ges_empresas e where p.per_id="+id+" and p.emp_id=e.emp_id");
 		/*
 		 * EJECUCION DE QUERY PERSONA SE GUARDA EL OBJETO PERSONA
 		 */

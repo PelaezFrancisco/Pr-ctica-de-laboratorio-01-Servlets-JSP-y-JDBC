@@ -117,7 +117,7 @@
 	                <div class="col-md-6 col-lg-4 mb-5" onclick="redirectSignIn()">
 	                    <div class="portfolio-item mx-auto" data-toggle="modal" >
 	                            <div class="portfolio-item-caption-content text-center text-white"></div>
-	                        <img class="img-fluid" src="${pro.productoImagen}" alt="" />
+	                        <img class="img-fluid" style="width: 400px; height: 280px" src="${pro.productoImagen}" alt="" />
 	                        <h3 style="text-align: center">${pro.productoNombre}</h3>
 	                        <p style="text-align: center">${pro.productoDescripcion}</p>
 	                    </div>
