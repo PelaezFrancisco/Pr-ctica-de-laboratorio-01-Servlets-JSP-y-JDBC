@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ListarProductos</title>
+    <title>ListarPedidos</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/" />
     <!-- Font Awesome icons (free version)-->
@@ -26,7 +26,7 @@
             <!-- Masthead Avatar Image-->
             <img class="masthead-avatar mb-5" src="assets/img/portfolio/lista.png" alt="" />
             <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Listar Productos</h1>
+            <h1 class="masthead-heading text-uppercase mb-0">Listar Pedidos</h1>
             <!-- Icon Divider-->
         </div>
     </header>
@@ -40,40 +40,40 @@
 
                 <ul class="navbar-nav ml-auto">
 
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">Pagina Principal</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="IndexController">Pagina Principal</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/private/admin/CrearProducto.html">Agregar Productos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ActualizarProducto">Modificar Productos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/private/admin/buscar_producto.html">Buscar Productos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">Listar Productos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/private/admin/eliminar_producto.html">Eliminar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListaPedidosController">Listado Pedidos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/public/IniciarSesion.html">Cerrar Sesion</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <c:set var="lista" scope="request" value="${productos}" />
+    <c:set var="lista" scope="request" value="${pedidosC}" />
 
     <table>
         <tr>
-            <td><strong>Id</strong></td>
-            <td><strong>Nombre</strong></td>
-            <td><strong>Descripcion</strong></td>
-            <td><strong>Stock</strong></td>
-            <td><strong>PrecioV</strong></td>
-            <td><strong>categoria</strong></td>
-            <td><strong>Empresa</strong></td>
+            <td><strong>Nro</strong></td>
+            <td><strong>Subtotal</strong></td>
+            <td><strong>Iva</strong></td>
+            <td><strong>Desc</strong></td>
+            <td><strong>Total</strong></td>
+            <td><strong>Estado</strong></td>
+            <td><strong>Cliente</strong></td>
         </tr>
-        <c:forEach var="pro" items="${lista}">
+        <c:forEach var="ped" items="${lista}">
             <tr>
-                <td>${pro.productoId}</td>
-                <td>${pro.productoNombre}</td>
-                <td>${pro.productoDescripcion}</td>
-                <td>${pro.productoStock}</td>
-                <td>${pro.productoPrecioVenta}</td>
-                <td>${pro.cat_id}</td>
-                <td>${pro.emp_id}</td>
-
+						            		
+                <td>${ped.pedidoCabeceraNumero}</td>
+                <td>${ped.pedidoCabeceraSubtotal}</td>
+                <td>${ped.pedidoCabeceraIva}</td>
+                <td>${ped.pedidoCabeceraDescuento}</td>
+                <td>${ped.pedidoCabeceraTotal}</td>
+                <td>${ped.pedidoCabeceraEstado}</td>
+                <td>${ped.pedidoCabeceraPerI}</td>
+				
             </tr>
         </c:forEach>
     </table>

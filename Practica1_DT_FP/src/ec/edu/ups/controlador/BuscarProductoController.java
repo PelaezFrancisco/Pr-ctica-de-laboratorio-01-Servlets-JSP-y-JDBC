@@ -1,6 +1,7 @@
 package ec.edu.ups.controlador;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,14 +22,13 @@ import ec.edu.ups.modelo.Producto;
 public class BuscarProductoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductoDAO productoDao;
-	private Producto producto;
+	private List<Producto>listaBusqueda;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public BuscarProductoController() {
         productoDao = DAOFactory.getFactory().getProductoDAO();
-        producto = new Producto();
     }
 
 	/**
@@ -46,9 +46,10 @@ public class BuscarProductoController extends HttpServlet {
 			throws ServletException, IOException {
 		String url= null;
 		try {
-			int id = Integer.valueOf(request.getParameter("id"));
-			producto = productoDao.read(id);
-			request.setAttribute("producto", producto );
+			String id = request.getParameter("id");
+			listaBusqueda = productoDao.busqueda(id);
+			System.out.println("Tamaño de la Lista: " + listaBusqueda.size());
+			request.setAttribute("productosBusqueda", listaBusqueda);
 			url = "/private/admin/buscar_producto.jsp";
 		} catch (Exception e) {
 			url = "/JSPs/error.jsp";
