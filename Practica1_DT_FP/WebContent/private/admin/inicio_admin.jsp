@@ -35,12 +35,12 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
 
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="private/admin/CrearProducto.html">Agregar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ActualizarProducto">Modificar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="private/admin/buscar_producto.html">Buscar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListarProductoController">Listar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="private/admin/eliminar_producto.html">Eliminar Productos</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListaPedidosController">Listado Pedidos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="private/admin/CrearProducto.html?idP=${empresa.persona.get(0).id}&idE=${empresa.persona.get(0).empresaId}">Agregar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ActualizarProducto?id=${empresa.persona.get(0).id}">Modificar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="private/admin/buscar_producto.html?id=${empresa.persona.get(0).id}">Buscar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListarProductoController?id=${empresa.persona.get(0).empresaId}">Listar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="private/admin/eliminar_producto.html?id=${empresa.persona.get(0).empresaId}">Eliminar Productos</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Practica1_DT_FP/ListaPedidosController?id=${empresa.persona.get(0).empresaId}">Listado Pedidos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index1.html">Cerrar Sesion</a></li>
                 </ul>
             </div>
@@ -60,15 +60,10 @@
                 <div class="divider-custom-line"></div>
             </div>
             <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Perfil de Administrador de ${empresa.empresaNombre}</p>
+            <p class="masthead-subheading font-weight-light mb-0">Perfil de Administrador de: ${empresa.persona.get(0).empresaId}</p>
         </div>
     </header>
-    <form method="GET" action="/Practica1_DT_FP/ListarProductoController" >
-        <div style="display: none">
-        <input type="text" id="id" name="id" value="${empresa.persona.get(0).id}"/>
-		
-		</div> <input type="submit" id="login" name="login" value="Buscar" />
-    </form>
+    
     <!-- Portfolio Section-->
     <section class="page-section portfolio" id="portfolio">
         <div class="container">

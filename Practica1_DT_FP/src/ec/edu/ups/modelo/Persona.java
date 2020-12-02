@@ -14,12 +14,12 @@ public class Persona implements Serializable{
 	private String direccion;
 	private String email;
 	private String contrasena;
-	
+	private int empresaId;
 	public Persona() {
 		// Constructor obligatorio
 	} 
 
-	public Persona(int id, String cedula, String nombre, String apellido, char rol, String telefono, String direccion, String email, String contrasena) { 
+	public Persona(int id, String cedula, String nombre, String apellido, char rol, String telefono, String direccion, String email, String contrasenan ,int empId) { 
 		// Constructor opcional
 		this.setId(id);
 		this.setCedula(cedula);
@@ -30,7 +30,7 @@ public class Persona implements Serializable{
 		this.setDireccion(direccion);
 		this.setEmail(email);
 		this.setContrasena(contrasena);
-		
+		this.setEmpresaId(empId);
 	}
 
 	public int getId() {
@@ -103,6 +103,14 @@ public class Persona implements Serializable{
 
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
+	}
+
+	public int getEmpresaId() {
+		return empresaId;
+	}
+
+	public void setEmpresaId(int empresaId) {
+		this.empresaId = empresaId;
 	}
 
 	public static long getSerialversionuid() {

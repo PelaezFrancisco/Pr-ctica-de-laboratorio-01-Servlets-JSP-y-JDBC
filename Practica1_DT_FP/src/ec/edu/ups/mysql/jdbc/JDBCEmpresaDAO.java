@@ -52,6 +52,7 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, Integer, String> imp
 				persona_aux.setDireccion(rs_3.getString("per_direccion"));
 				persona_aux.setEmail(rs_3.getString("per_email"));
 				persona_aux.setTelefono(rs_3.getString("per_telefono"));
+				persona_aux.setEmpresaId(rs_3.getInt("emp_id"));
 				//Se guarda en el arraylist
 				personas.add(persona_aux);
 				
@@ -226,13 +227,13 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, Integer, String> imp
 	}
 
 	@Override
-	public List<Producto> busqueda(String nombre) {
+	public List<Empresa> busqueda(String nombre) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Producto> ProEmpPer(int ID) {
+	public List<Empresa> ProEmpPer(int ID) {
 		// TODO Auto-generated method stub
 		return null;
 	}

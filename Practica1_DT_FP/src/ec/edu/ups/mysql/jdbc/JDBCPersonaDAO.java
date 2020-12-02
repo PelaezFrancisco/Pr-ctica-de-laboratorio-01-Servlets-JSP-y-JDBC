@@ -32,9 +32,9 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer, String> imp
 
 	@Override
 	public void createTable() {
-		conexion.update("DROP TABLE IF EXISTS GES_Personas");
-		conexion.update("CREATE TABLE GES_Personas (" + "ID INT NOT NULL, " + "CEDULA VARCHAR(10), "
-				+ "NOMBRE VARCHAR(255), APELLIDO VARCHAR(255)" + ", PRIMARY KEY (ID))");
+		//conexion.update("DROP TABLE IF EXISTS GES_Personas");
+		//conexion.update("CREATE TABLE GES_Personas (" + "ID INT NOT NULL, " + "CEDULA VARCHAR(10), "
+			//	+ "NOMBRE VARCHAR(255), APELLIDO VARCHAR(255)" + ", PRIMARY KEY (ID))");
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer, String> imp
 			if (rs != null && rs.next()) {
 				persona = new Persona(rs.getInt("per_id"), rs.getString("per_cedula"), rs.getString("per_nombre"),
 						rs.getString("per_apellido"), rs.getString("per_rol").charAt(0), rs.getString("per_telefono"), rs.getString("per_direccion"),
-						rs.getString("per_email"), rs.getString("per_telefono"));
+						rs.getString("per_email"), rs.getString("per_telefono"),rs.getInt("emp_id"));
 				/*persona.setId(rs.getInt("per_id"));
 				persona.setCedula( rs.getString("per_cedula"));	
 				persona.setNombre(rs.getString("per_nombre"));
@@ -119,6 +119,7 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer, String> imp
 				persona.setDireccion(rs.getString("per_direccion"));
 				persona.setEmail(rs.getString("per_email"));
 				persona.setContrasena(rs.getString("per_contrasena"));
+				persona.setEmpresaId(rs.getInt("emp_id"));
 			}
 		} catch (SQLException e) {
 			System.out.println(">>>Error al buscar persona con mail "+ email + e.getMessage());
@@ -134,13 +135,13 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer, String> imp
 	}
 
 	@Override
-	public List<Producto> busqueda(String nombre) {
+	public List<Persona> busqueda(String nombre) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Producto> ProEmpPer(int ID) {
+	public List<Persona> ProEmpPer(int ID) {
 		// TODO Auto-generated method stub
 		return null;
 	}

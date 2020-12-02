@@ -51,30 +51,26 @@
             </div>
         </div>
     </nav>
-    <c:set var="lista" scope="request" value="${pedidosC}" />
+    <c:set var="lista" scope="request" value="${pedidosD}" />
 
     <table>
         <tr>
-            <td><strong>Nro</strong></td>
+            <td><strong>Codigo</strong></td>
+            <td><strong>Cantidad</strong></td>
+            <td><strong>PrecioU</strong></td>
             <td><strong>Subtotal</strong></td>
-            <td><strong>Iva</strong></td>
-            <td><strong>Desc</strong></td>
-            <td><strong>Total</strong></td>
-            <td><strong>Estado</strong></td>
-            <td><strong>Cliente</strong></td>
-            <td><strong>Detalle</strong></td>
+            <td><strong>Producto</strong></td>
+            <td><strong>PedidoCabecera</strong></td>
         </tr>
-        <c:forEach var="ped" items="${lista}">
+        <c:forEach var="pedD" items="${lista}">
             <tr>
 						            		
-                <td>${ped.pedidoCabeceraNumero}</td>
-                <td>${ped.pedidoCabeceraSubtotal}</td>
-                <td>${ped.pedidoCabeceraIva}</td>
-                <td>${ped.pedidoCabeceraDescuento}</td>
-                <td>${ped.pedidoCabeceraTotal}</td>
-                <td>${ped.pedidoCabeceraEstado}</td>
-                <td>${ped.pedidoCabeceraPerI}</td>
-                <td> <a href="/Practica1_DT_FP/PedidoDetalleController?idPedido=${ped.pedidoCabeceraNumero}">Detalle</a> </td>
+                <td>${pedD.pedidoDetalleId}</td>
+                <td>${pedD.pedidoDetalleCantidad}</td>
+                <td>${pedD.pedidoDetallePrecioUnitario}</td>
+                <td>${pedD.pedidoDetalleSubtotal}</td>
+                <td>${pedD.pro_id}</td>
+                <td>${pedD.ped_id}</td>
 				
             </tr>
         </c:forEach>
