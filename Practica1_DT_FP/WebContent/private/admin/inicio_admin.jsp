@@ -69,6 +69,7 @@
         <div class="container">
             <!-- Portfolio Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Datos de Administrador</h2>
+            <br>
             <!-- Icon Divider-->
             <p style="text-align: center">Nombre: ${empresa.persona.get(0).nombre} ${empresa.persona.get(0).apellido}</p>
             <p style="text-align: center"> Cedula: ${empresa.persona.get(0).cedula}</p>
@@ -84,6 +85,12 @@
             <!-- EMPRESA -->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Datos de la Empresa</h2>
             <!-- Icon Divider-->
+            <br>
+            <p style="text-align: center">Nombre: ${empresa.empresaNombre}</p>
+            <p style="text-align: center"> Ruc: ${empresa.empresaRuc}</p>
+            <p style="text-align: center">Telefono: ${empresa.empresaTelefono}</p>
+            <p style="text-align: center">Email: ${empresa.empresaEmail}</p>
+            
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
