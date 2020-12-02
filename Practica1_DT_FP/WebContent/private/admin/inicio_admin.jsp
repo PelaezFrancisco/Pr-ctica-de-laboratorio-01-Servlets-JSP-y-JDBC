@@ -72,6 +72,7 @@
             <p style="text-align: center">Nombre: ${empresa.persona.get(0).nombre} ${empresa.persona.get(0).apellido}</p>
             <p style="text-align: center"> Cedula: ${empresa.persona.get(0).cedula}</p>
             <p style="text-align: center">Telefono: ${empresa.persona.get(0).telefono}</p>
+            <p style="text-align: center">Email: ${empresa.persona.get(0).email}</p>
             
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
