@@ -37,8 +37,12 @@ public class ListaPedidosController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		String url = null;
+		
 		try {
-			listaPedidoC = pedidoCabeceraDao.find();
+			int codigoE = Integer.valueOf(request.getParameter("id"));
+			System.out.println("Id de la empresa Recopilada" + codigoE);
+			listaPedidoC = pedidoCabeceraDao.ProEmpPer(codigoE);
+			
 			System.out.println("Tamaño de la Lista"+ listaPedidoC.size());
 			request.setAttribute("pedidosC", listaPedidoC);
 			url = "/private/admin/listar_pedidos.jsp";

@@ -2,6 +2,7 @@ package ec.edu.ups.dao;
 
 import java.util.List;
 
+import ec.edu.ups.modelo.PedidoCabecera;
 import ec.edu.ups.modelo.Persona;
 import ec.edu.ups.modelo.Producto;
 
@@ -41,9 +42,9 @@ public interface GenericDAO<T, ID, EMAIL> {
 
 	public T  read2(String nombre);
 
-	public List<Producto> busqueda(String nombre);
+	public List<T> busqueda(String nombre);
 
-	public List<Producto> ProEmpPer(int ID);
+	public List<T> ProEmpPer(int ID);
 	
 	
 

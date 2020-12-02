@@ -117,15 +117,26 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 	@Override
 	public List<Producto> ProEmpPer(int ID) {
 		List<Producto> list = new ArrayList<Producto>();
-		ResultSet rs= conexion.query("Select * from ges_personas p, ges_empresas e, ges_productos pro where p.per_id="+ ID+ " and p.emp_id=e.emp_id And pro.emp_id= e.emp_id;");
+		ResultSet rs= conexion.query("select * from ges_productos pro where pro.emp_id ="+ID);
+		System.out.println("El id recolectado es : " +ID );
 		try {
 			while(rs.next()) {
-				list.add(new Producto(rs.getInt("pro_id"), rs.getString("pro_nombre"), rs.getString("pro_descripcion"),
-						rs.getInt("pro_stock"), rs.getDouble("pro_precioV"),rs.getString("pro_imagen"),rs.getInt("cat_id"), rs.getInt("emp_id")));
+				Producto producto = new Producto();
+				producto.setProductoId(rs.getInt("pro_id"));
+				producto.setProductoNombre(rs.getString("pro_nombre"));
+				producto.setProductoDescripcion(rs.getString("pro_descripcion"));
+				producto.setProductoStock(rs.getInt("pro_stock"));
+				producto.setProductoPrecioVenta(rs.getDouble("pro_precioV"));
+				producto.setCat_id(rs.getInt("cat_id"));
+				producto.setEmp_id(rs.getInt("emp_id"));
+				list.add(producto);
+			System.out.println(rs.getString("pro_nombre"));	
 			}
 		}catch (SQLException e) {
+			e.printStackTrace();
 			System.out.println(">>>WARNING (JDBCPersonaDAO:find): " + e.getMessage());
 		}
+		
 		return list;
 	}
 

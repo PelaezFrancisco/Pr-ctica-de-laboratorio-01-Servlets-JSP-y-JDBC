@@ -4,6 +4,7 @@ import ec.edu.ups.mysql.jdbc.JDBCPersonaDAO;
 import ec.edu.ups.mysql.jdbc.JDBCProductoDAO;
 import ec.edu.ups.mysql.jdbc.JDBCEmpresaDAO;
 import ec.edu.ups.mysql.jdbc.JDBCPedidoCDAO;
+import ec.edu.ups.mysql.jdbc.JDBCPedidoDetalle;
 /**
  * Clase JDBCGenericDAO.
  * 
@@ -49,6 +50,11 @@ public class JDBCDAOFactory extends DAOFactory {
 	public PedidoCabeceraDAO getPedidoCabeceraDAO() {
 		// TODO Auto-generated method stub
 		return new JDBCPedidoCDAO();
-	}	
+	}
+	
+	@Override
+	public PedidoDetalleDAO getPedidoDetalleDAO() {
+		return new JDBCPedidoDetalle();
+	}
 
 }

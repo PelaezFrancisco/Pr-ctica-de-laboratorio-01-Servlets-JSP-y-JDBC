@@ -79,15 +79,33 @@ public class JDBCPedidoCDAO extends JDBCGenericDAO<PedidoCabecera, Integer, Stri
 	}
 
 	@Override
-	public List<Producto> busqueda(String nombre) {
+	public List<PedidoCabecera> busqueda(String nombre) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Producto> ProEmpPer(int ID) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<PedidoCabecera> ProEmpPer(int ID) {
+		
+		List<PedidoCabecera>pedidoT =new ArrayList<PedidoCabecera>();
+		
+				ResultSet rs= conexion.query("select * from ges_pedido_cabeceras pc, ges_pedido_detalles pd, ges_productos pro, ges_empresas emp  where pd.ped_numeroP = pc.ped_numeroP and pd.pro_id= pro.pro_id and pro.emp_id ="+ ID+" and   emp.emp_id= "+ID);
+		try {
+			while(rs.next()) {
+				PedidoCabecera pedidoCab = new PedidoCabecera();
+				pedidoCab.setPedidoCabeceraNumero(rs.getInt("ped_numeroP"));
+				//pedidoCab.setPedidoCabeceraFecha(rs.getDate("ped_fecha"));
+				pedidoCab.setPedidoCabeceraSubtotal(rs.getDouble("ped_subtotal"));
+				pedidoCab.setPedidoCabeceraIva(rs.getDouble("ped_iva"));
+				pedidoCab.setPedidoCabeceraDescuento(rs.getDouble("ped_descuento"));
+				pedidoCab.setPedidoCabeceraEstado(rs.getString("ped_estado").charAt(0));
+				pedidoCab.setPedidoCabeceraPerI(rs.getInt("per_id"));
+				pedidoT.add(pedidoCab);
+				}
+		} catch (Exception e) {
+			System.out.println(">>>Error a listar ");
+		}
+		return pedidoT;
 	}
 
 }

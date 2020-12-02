@@ -39,12 +39,15 @@ public class ActualizarProductoController extends HttpServlet {
 			throws ServletException, IOException {
 		String url = null;
 		try {
-			//listaProducto = productoDao.ProEmpPer();
+			int codigo =Integer.valueOf(request.getParameter("id"));
+			System.out.println("El codigo es: "+ codigo);
 			
+			listaProducto = productoDao.ProEmpPer(codigo);
 			System.out.println("Tamaño de la Lista: " + listaProducto.size());
 			request.setAttribute("productos", listaProducto);
 			url = "/private/admin/actualizar_productos.jsp";
 		} catch (Exception e) {
+			e.printStackTrace();
 			url = "/JSPs/error.jsp";
 		}
 		getServletContext().getRequestDispatcher(url).forward(request, response);

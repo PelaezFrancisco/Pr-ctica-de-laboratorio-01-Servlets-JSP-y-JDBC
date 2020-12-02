@@ -2,6 +2,8 @@ package ec.edu.ups.controlador;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -27,6 +29,7 @@ public class CrearProductoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProductoDAO productoDao;
 	private Producto producto;
+	private List<Producto>listaProducto;
 	
        
     /**
@@ -43,7 +46,11 @@ public class CrearProductoController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		}
+		String url = null;
+			int codigo =Integer.valueOf(request.getParameter("idP"));
+			System.out.println("El codigo es del metodo GET: "+ codigo);
+		
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -54,20 +61,10 @@ public class CrearProductoController extends HttpServlet {
 		
 		String url = null;
 		
+		//int codigoP = Integer.valueOf(request.getParameter("id"));
+		
 		try {
-	        // constructs path of the directory to save uploaded file
-	        
-	        //String path = "C:\\Users\\pelae\\git\\Pr-ctica-de-laboratorio-01-Servlets-JSP-y-JDBC\\Practica1_DT_FP\\WebContent\\images";
-
-	        //String fileName = null;
-	        //Get all the parts from request and write it to the file on server
-	        //for (Part part : request.getParts()) {
-	        //    fileName = getFileName(part);   
-	        //    part.write(path + File.separator + fileName);
-	        //   
-	        //}
-	        
-			
+	   
 			//producto.setProductoId(Integer.valueOf(request.getParameter("id")));
 			producto.setProductoNombre(request.getParameter("nombre"));
 			producto.setProductoDescripcion(request.getParameter("descrip"));
@@ -79,13 +76,13 @@ public class CrearProductoController extends HttpServlet {
 			productoDao.create(producto);	
 			url="/private/admin/inicio_admin.jsp" ;
 			
-		} catch (Exception e) {
+			} 
+		catch (Exception e) {
 			e.printStackTrace();
 			url = "/JSPs/error.jsp";
 			
 		}
 		getServletContext().getRequestDispatcher(url).forward(request, response);
-	
 	}
 	 private String getFileName(Part part) {
 	        String contentDisp = part.getHeader("content-disposition");
