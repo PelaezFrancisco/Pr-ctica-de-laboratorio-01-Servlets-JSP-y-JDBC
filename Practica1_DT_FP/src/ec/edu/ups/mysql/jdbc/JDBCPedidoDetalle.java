@@ -28,12 +28,29 @@ public class JDBCPedidoDetalle extends JDBCGenericDAO<PedidoDetalle, Integer, St
 	@Override
 	public PedidoDetalle read(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		ResultSet rs= conexion.query("select * from ges_pedido_detalles where pde_id ="+id);
+		PedidoDetalle ped = null;
+		try {
+			if (rs.next()) {
+				ped = new PedidoDetalle();
+				ped.setPedidoDetalleId(rs.getInt("pde_id"));
+				ped.setPedidoDetalleCantidad(rs.getInt("pde_cantidad"));
+				ped.setPedidoDetalleSubtotal(rs.getDouble("pde_precioU"));
+				ped.setPedidoDetalleSubtotal(rs.getDouble("pde_subtotal"));
+				ped.setPro_id(rs.getInt("pro_id"));
+				ped.setPed_id(rs.getInt("ped_numeroP"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ped;
 	}
 
 	@Override
 	public void update(PedidoDetalle entity) {
-		// TODO Auto-generated method stub
+		String pedido = "update GES_Pedido_Detalles set pde_cantidad = "+entity.getPedidoDetalleCantidad()+
+				" where pde_id="+entity.getPedidoDetalleId()+" and pro_id="+entity.getPro_id();
+		conexion.update(pedido);
 		
 	}
 

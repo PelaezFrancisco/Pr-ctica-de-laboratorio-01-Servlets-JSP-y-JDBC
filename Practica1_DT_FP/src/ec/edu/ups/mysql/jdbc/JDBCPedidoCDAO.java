@@ -8,6 +8,7 @@ import java.util.List;
 
 import ec.edu.ups.dao.PedidoCabeceraDAO;
 import ec.edu.ups.modelo.PedidoCabecera;
+import ec.edu.ups.modelo.PedidoDetalle;
 import ec.edu.ups.modelo.Persona;
 import ec.edu.ups.modelo.Producto;
 
@@ -31,8 +32,39 @@ public class JDBCPedidoCDAO extends JDBCGenericDAO<PedidoCabecera, Integer, Stri
 
 	@Override
 	public PedidoCabecera read(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		String peticion = "select * from GES_Pedido_Cabeceras ca, ges_pedido_detalles de where ca.ped_numeroP="+
+				id+" AND de.ped_numeroP="+id;
+		ResultSet rs= conexion.query(peticion);
+		PedidoCabecera cab = new PedidoCabecera();
+		ArrayList<PedidoDetalle> list = new ArrayList<PedidoDetalle>();
+		try {
+			while (rs.next()) {
+				
+				PedidoDetalle p = new PedidoDetalle();
+				p.setPedidoDetalleId(rs.getInt("pde_id"));
+				p.setPedidoDetalleCantidad(rs.getInt("pde_cantidad"));
+				p.setPedidoDetalleSubtotal(rs.getDouble("pde_precioU"));
+				p.setPedidoDetalleSubtotal(rs.getDouble("pde_subtotal"));
+				p.setPro_id(rs.getInt("pro_id"));
+				p.setPed_id(rs.getInt("ped_numeroP"));
+				list.add(p);
+				
+				//Cabecera
+				cab.setPedidoCabeceraNumero(rs.getInt("ped_numeroP"));
+				cab.setPedidoCabeceraFecha(rs.getDate("ped_fecha").toString());
+				cab.setPedidoCabeceraSubtotal(rs.getDouble("ped_subtotal"));
+				cab.setPedidoCabeceraIva(rs.getDouble("ped_iva"));
+				cab.setPedidoCabeceraDescuento(rs.getDouble("ped_descuento"));
+				cab.setPedidoCabeceraEstado(rs.getString("ped_estado").charAt(0));
+				cab.setPedidoCabeceraPerI(rs.getInt("per_id"));
+				
+				
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		cab.setPedidoDetalle(list);
+		return cab;
 	}
 
 	@Override
@@ -43,7 +75,7 @@ public class JDBCPedidoCDAO extends JDBCGenericDAO<PedidoCabecera, Integer, Stri
 
 	@Override
 	public void delete(PedidoCabecera entity) {
-		// TODO Auto-generated method stub
+		conexion.update("DELETE FROM GES_Pedido_Cabeceras WHERE ped_numeroP = "+entity.getPedidoCabeceraNumero());
 		
 	}
 

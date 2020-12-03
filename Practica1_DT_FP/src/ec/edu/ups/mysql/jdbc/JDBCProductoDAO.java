@@ -115,7 +115,6 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 	}
 	
 	@Override
-
 	public ArrayList<Producto> ProEmpPer(int id) {
 		ArrayList<Producto> list = new ArrayList<Producto>();
 		ResultSet rs = null;
