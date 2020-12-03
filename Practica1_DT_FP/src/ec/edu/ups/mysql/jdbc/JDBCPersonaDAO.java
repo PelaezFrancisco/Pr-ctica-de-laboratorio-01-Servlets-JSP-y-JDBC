@@ -87,19 +87,29 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer, String> imp
 
 	@Override
 	public List<Persona> find() {
-		List<Persona> list = new ArrayList<Persona>();
+		ArrayList<Persona> list = new ArrayList<Persona>();
 		ResultSet rs = conexion.query("SELECT * FROM GES_Personas");
 		try {
 			while (rs.next()) {
-				/*list.add(new Persona(rs.getInt("per_id"), rs.getString("per_cedula"), rs.getString("per_nombre"),
-						rs.getString("per_apellido"), rs.getString("per_telefono"), rs.getString("per_direccion"),
-						rs.getString("per_email"), rs.getString("per_telefono")));*/
+				Persona p = new Persona();
+				p.setId(rs.getInt("per_id"));
+				p.setNombre(rs.getString("per_nombre"));
+				p.setApellido(rs.getString("per_apellido"));
+				p.setRol((rs.getString("per_rol").charAt(0)));
+				p.setTelefono(rs.getString("per_telefono"));
+				p.setDireccion(rs.getString("per_direccion"));
+				p.setEmail(rs.getString("per_email"));
+				p.setContrasena(rs.getString("per_contrasena"));
+				p.setEmpresaId(rs.getInt("emp_id"));
+				
+				list.add(p);
 			}
 
 		} catch (SQLException e) {
-			System.out.println(">>>WARNING (JDBCPersonaDAO:find): " + e.getMessage());
+			e.printStackTrace();
+			System.out.println(">>>ERROR FIND DE JDBCPERSONA");
 		}
-		return list;
+		return (ArrayList<Persona>) list;
 	}
 	
 	@Override
@@ -142,6 +152,12 @@ public class JDBCPersonaDAO extends JDBCGenericDAO<Persona, Integer, String> imp
 
 	@Override
 	public List<Persona> ProEmpPer(int ID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Producto> lista(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

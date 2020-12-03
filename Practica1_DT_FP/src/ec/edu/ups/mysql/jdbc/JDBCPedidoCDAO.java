@@ -1,6 +1,7 @@
 package ec.edu.ups.mysql.jdbc;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +17,15 @@ public class JDBCPedidoCDAO extends JDBCGenericDAO<PedidoCabecera, Integer, Stri
 	public void createTable() {
 		// TODO Auto-generated method stub
 		
+		
 	}
 
 	@Override
 	public void create(PedidoCabecera entity) {
-		// TODO Auto-generated method stub
+		String sentencia = "INSERT INTO GES_Pedido_Cabeceras VALUES(default, '"+entity.getPedidoCabeceraFecha()
+		+"',"+entity.getPedidoCabeceraSubtotal()+","+entity.getPedidoCabeceraIva()+","+entity.getPedidoCabeceraDescuento()
+		+","+entity.getPedidoCabeceraTotal()+",'P',"+entity.getPedidoCabeceraPerI()+")";
+		conexion.update(sentencia);
 		
 	}
 
@@ -52,7 +57,7 @@ public class JDBCPedidoCDAO extends JDBCGenericDAO<PedidoCabecera, Integer, Stri
 			while(rs.next()) {
 				PedidoCabecera pedidoCab = new PedidoCabecera();
 				pedidoCab.setPedidoCabeceraNumero(rs.getInt("ped_numeroP"));
-				//pedidoCab.setPedidoCabeceraFecha(rs.getDate("ped_fecha"));
+				pedidoCab.setPedidoCabeceraFecha(rs.getDate("ped_fecha").toString());
 				pedidoCab.setPedidoCabeceraSubtotal(rs.getDouble("ped_subtotal"));
 				pedidoCab.setPedidoCabeceraIva(rs.getDouble("ped_iva"));
 				pedidoCab.setPedidoCabeceraDescuento(rs.getDouble("ped_descuento"));
@@ -72,10 +77,22 @@ public class JDBCPedidoCDAO extends JDBCGenericDAO<PedidoCabecera, Integer, Stri
 		return null;
 	}
 
+	/*REGRESA EL ULTIMO PEDIDO CABECERA*/
 	@Override
 	public PedidoCabecera read2(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+		PedidoCabecera cab = new PedidoCabecera();
+		ResultSet rs= conexion.query("select MAX(ped_numeroP) from GES_Pedido_Cabeceras");
+		try {
+			if (rs.next()) {
+				//System.out.println("Entra a read2 if");
+				cab.setPedidoCabeceraNumero(rs.getInt("MAX(ped_numeroP)"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return cab;
 	}
 
 	@Override
@@ -94,7 +111,7 @@ public class JDBCPedidoCDAO extends JDBCGenericDAO<PedidoCabecera, Integer, Stri
 			while(rs.next()) {
 				PedidoCabecera pedidoCab = new PedidoCabecera();
 				pedidoCab.setPedidoCabeceraNumero(rs.getInt("ped_numeroP"));
-				//pedidoCab.setPedidoCabeceraFecha(rs.getDate("ped_fecha"));
+				pedidoCab.setPedidoCabeceraFecha(rs.getDate("ped_fecha").toString());
 				pedidoCab.setPedidoCabeceraSubtotal(rs.getDouble("ped_subtotal"));
 				pedidoCab.setPedidoCabeceraIva(rs.getDouble("ped_iva"));
 				pedidoCab.setPedidoCabeceraDescuento(rs.getDouble("ped_descuento"));
@@ -106,6 +123,12 @@ public class JDBCPedidoCDAO extends JDBCGenericDAO<PedidoCabecera, Integer, Stri
 			System.out.println(">>>Error a listar ");
 		}
 		return pedidoT;
+	}
+
+	@Override
+	public ArrayList<Producto> lista(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

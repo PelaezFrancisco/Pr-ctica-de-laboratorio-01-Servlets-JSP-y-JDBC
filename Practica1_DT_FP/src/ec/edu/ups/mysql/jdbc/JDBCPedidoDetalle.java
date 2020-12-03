@@ -7,6 +7,7 @@ import java.util.List;
 import ec.edu.ups.dao.PedidoDetalleDAO;
 import ec.edu.ups.modelo.PedidoCabecera;
 import ec.edu.ups.modelo.PedidoDetalle;
+import ec.edu.ups.modelo.Producto;
 
 public class JDBCPedidoDetalle extends JDBCGenericDAO<PedidoDetalle, Integer, String> implements PedidoDetalleDAO {
 
@@ -18,8 +19,10 @@ public class JDBCPedidoDetalle extends JDBCGenericDAO<PedidoDetalle, Integer, St
 
 	@Override
 	public void create(PedidoDetalle entity) {
-		// TODO Auto-generated method stub
-		
+		String sentencia = "INSERT INTO GES_Pedido_Detalles VALUES(default, "+entity.getPedidoDetalleCantidad()+
+				" ,"+entity.getPedidoDetallePrecioUnitario()+","+entity.getPedidoDetalleSubtotal()+
+				", "+entity.getPro_id()+","+entity.getPed_id()+")";
+		conexion.update(sentencia);
 	}
 
 	@Override
@@ -84,5 +87,11 @@ public class JDBCPedidoDetalle extends JDBCGenericDAO<PedidoDetalle, Integer, St
 			e.printStackTrace();
 		}
 		return pedidoD;
+	}
+
+	@Override
+	public ArrayList<Producto> lista(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

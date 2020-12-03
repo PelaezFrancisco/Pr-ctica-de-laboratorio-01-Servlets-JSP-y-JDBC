@@ -178,4 +178,10 @@ public class JDBCProductoDAO extends JDBCGenericDAO<Producto, Integer, String> i
 		return productoB;
 	}
 
+	@Override
+	public ArrayList<Producto> lista(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -33,12 +33,15 @@ public class CompraController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String url = null;
+		
 		int id = Integer.parseInt(request.getParameter("id"));
+		//System.out.println("parametro recibido en CompraController= "+id);
 		try {
-			System.out.println("El id que manda a PorEmpPer"+id);
+			//System.out.println("El id que manda a PorEmpPer"+id);
 			listaProducto = (ArrayList<Producto>) productoDao.ProEmpPer(id);
-			System.out.println("Tamaño de la Lista Productos: " + listaProducto.size());
+			//System.out.println("Tamaño de la Lista Productos: " + listaProducto.size());
 			request.setAttribute("productos", listaProducto);
 			url = "/private/user/compras.jsp";
 		} catch (Exception e) {

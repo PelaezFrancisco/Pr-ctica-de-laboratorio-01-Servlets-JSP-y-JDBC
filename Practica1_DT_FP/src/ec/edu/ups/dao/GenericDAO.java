@@ -1,5 +1,6 @@
 package ec.edu.ups.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ec.edu.ups.modelo.PedidoCabecera;
@@ -45,6 +46,8 @@ public interface GenericDAO<T, ID, EMAIL> {
 	public List<T> busqueda(String nombre);
 
 	public List<T> ProEmpPer(int ID);
+
+	public ArrayList<Producto> lista(int id);
 	
 	
 

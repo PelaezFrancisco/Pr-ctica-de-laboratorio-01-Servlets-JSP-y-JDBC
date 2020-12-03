@@ -10,7 +10,7 @@ public class PedidoCabecera implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private int pedidoCabeceraNumero;
-    private LocalDateTime pedidoCabeceraFecha;
+    private String pedidoCabeceraFecha;
     private double pedidoCabeceraSubtotal;
     private double pedidoCabeceraIva;
     private double pedidoCabeceraDescuento;
@@ -25,7 +25,7 @@ public class PedidoCabecera implements Serializable {
 	public PedidoCabecera() {
 		
 	}
-	public PedidoCabecera(int numP, LocalDateTime fecha, double subtotal, double iva, double desc, double total, char estado, int perId ) {
+	public PedidoCabecera(int numP, String fecha, double subtotal, double iva, double desc, double total, char estado, int perId ) {
 		this.setPedidoCabeceraNumero(numP);
 		this.setPedidoCabeceraFecha(fecha);
 		this.setPedidoCabeceraSubtotal(subtotal);
@@ -41,11 +41,11 @@ public class PedidoCabecera implements Serializable {
 	public void setPedidoCabeceraNumero(int pedidoCabeceraNumero) {
 		this.pedidoCabeceraNumero = pedidoCabeceraNumero;
 	}
-	public LocalDateTime getPedidoCabeceraFecha() {
+	public String getPedidoCabeceraFecha() {
 		return pedidoCabeceraFecha;
 	}
-	public void setPedidoCabeceraFecha(LocalDateTime pedidoCabeceraFecha) {
-		this.pedidoCabeceraFecha = pedidoCabeceraFecha;
+	public void setPedidoCabeceraFecha(String mysqlDateString) {
+		this.pedidoCabeceraFecha = mysqlDateString;
 	}
 	public double getPedidoCabeceraSubtotal() {
 		return pedidoCabeceraSubtotal;

@@ -36,7 +36,7 @@
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="public/IniciarSesion.html">Iniciar Sesion</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#empresas">Empresas</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Acerca De</a></li>
-                    
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">Cerrar Sesion</a></li>
                 </ul>
             </div>
         </div>
@@ -73,7 +73,7 @@
             PRODUCTOS
             
              -->
-             <form onsubmit="red()">
+            <form name="compraPros" method="post" action="/Practica1_DT_FP/CrearPedido">
             <div class="row justify-content-center">
 			<script type="text/javascript"></script>
 			
@@ -90,7 +90,7 @@
 		                        <p style="text-align: center">${pro.productoDescripcion}</p>
 		                        <p style="text-align: center">Precio: $ ${pro.productoPrecioVenta}</p>
 		                        <div style="text-align: center">
-		                        	<input type="number" id="cant${pro.productoId}" name="cant${pro.productoId}" min="0" max="${pro.productoStock}">
+		                        	<input type="number" value=0 id="cant${pro.productoId}" name="cant${pro.productoId}" min="0" max="${pro.productoStock}">
 		                        </div>
 		                       	
 		                    </div>

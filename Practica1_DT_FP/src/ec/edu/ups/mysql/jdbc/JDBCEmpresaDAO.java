@@ -218,6 +218,34 @@ public class JDBCEmpresaDAO extends JDBCGenericDAO<Empresa, Integer, String> imp
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public ArrayList<Producto> lista(int id) {
+		ArrayList<Producto> list = new ArrayList<Producto>();
+		ResultSet rs = conexion.query("SELECT * from ges_empresas e, ges_productos p where e.emp_id ="+id+" AND p.emp_id="+id);
+		Producto producto;
+		try {
+			//System.out.println("Entra al try de list");
+			while (rs.next()) {
+				//System.out.println("Entra al while de list");
+				producto = new Producto();
+				producto.setProductoId(rs.getInt("pro_id"));
+				producto.setProductoNombre(rs.getString("pro_nombre"));
+				producto.setProductoDescripcion(rs.getString("pro_descripcion"));
+				producto.setProductoStock(rs.getInt("pro_stock"));
+				producto.setProductoPrecioVenta(rs.getDouble("pro_precioV"));
+				producto.setCat_id(rs.getInt("cat_id"));
+				producto.setEmp_id(rs.getInt("emp_id"));
+				
+				list.add(producto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Error en JDBCEmpresa en lista()");
+		}
+		
+ 		
+		return list;
+	}
 
 
 	@Override
