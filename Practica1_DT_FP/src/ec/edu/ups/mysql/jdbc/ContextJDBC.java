@@ -11,8 +11,8 @@ public class ContextJDBC {
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private static String URL = "jdbc:mysql://localhost:3306/GESTION_COMPRAS?serverTimezone=UTC";
 	private static String USER = "root";
-	//private static final String PASS = "DFTUrptu9799";
-	private static final String PASS = "Patito.123@456";
+	private static final String PASS = "DFTUrptu9799";
+	//private static final String PASS = "Patito.123@456";
 	
 	//Solo Cambia la contrasena
 	//private static final String PASS = "";
