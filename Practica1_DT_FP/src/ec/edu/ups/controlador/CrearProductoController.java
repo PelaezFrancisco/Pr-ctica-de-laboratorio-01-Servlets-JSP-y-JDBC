@@ -2,6 +2,7 @@ package ec.edu.ups.controlador;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import ec.edu.ups.dao.DAOFactory;
@@ -62,6 +64,14 @@ public class CrearProductoController extends HttpServlet {
 		String url = null;
 		
 		//int codigoP = Integer.valueOf(request.getParameter("id"));
+		
+		HttpSession session = request.getSession(false);
+		if (session.getAttribute("mail")!=null) {
+			response.setContentType("text/html");  
+			PrintWriter pw=response.getWriter(); 
+			response.sendRedirect("/Practica1_DT_FP/public/IniciarSesion.html");
+			pw.close(); 
+		}
 		
 		try {
 	   

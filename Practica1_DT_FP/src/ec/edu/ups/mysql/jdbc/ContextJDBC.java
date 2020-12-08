@@ -6,22 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- * Class ContextJDBC.
- * 
- * Clase que permite obtener una conexión a la base de datos y asegura que si ya
- * existe una conexión no la vuelva a crear utilizando el patrón de diseño
- * Singleton. Además, implementa los métodos para poder enviar sentencias SQL como
- * INSERT, DELETE, UPDATE y SELECT.
- * 
- * @author Gabriel A. León Paredes 
- * Doctor en Tecnologías de Información
- * https://www.linkedin.com/in/gabrielleonp
- * 
- * @see https://www.arquitecturajava.com/ejemplo-de-java-singleton-patrones-classloaders/
- * @version 1.0
- *
- */
+
 public class ContextJDBC {
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private static String URL = "jdbc:mysql://localhost:3306/GESTION_COMPRAS?serverTimezone=UTC";

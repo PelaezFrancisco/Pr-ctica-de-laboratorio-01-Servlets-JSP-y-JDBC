@@ -30,6 +30,7 @@ public class BuscarPedidoController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String url = null;
 		Empresa emp = new Empresa();
 		int id = Integer.parseInt(request.getParameter("id"));

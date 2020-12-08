@@ -1,11 +1,15 @@
 package ec.edu.ups.controlador;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.math.BigInteger; 
 import java.security.MessageDigest; 
 import java.security.NoSuchAlgorithmException; 
@@ -75,6 +79,11 @@ public class IniciarSesionController extends HttpServlet {
 			System.out.println("Contrasena de base= "+persona.getContrasena());
 			if (contrasena.equals(persona.getContrasena())) {
 				
+				//Carga los datos del usuario dentro del HttpSession
+				HttpSession  session=request.getSession(true);
+		        session.setAttribute("mail", email);
+		        session.setAttribute("password", persona.getContrasena());
+				
 				//If para redireccion de rol
 				if (rol=='A') {
 					System.out.println("Se manda a Admin");
@@ -89,13 +98,19 @@ public class IniciarSesionController extends HttpServlet {
 			
 			empresa = empresaDao.read(persona.getId());
 			request.setAttribute("empresa", empresa);
+			getServletContext().getRequestDispatcher(url).forward(request, response);
 			
 		} catch (Exception e) {
 			System.out.println("ERROR DE INICIO DE SESION");
 			e.printStackTrace();
-			url = "/JSPs/error.jsp";
+			response.setContentType("text/html");  
+			PrintWriter pw=response.getWriter(); 
+			//request.setAttribute("empresa", null);
+			response.sendRedirect("/Practica1_DT_FP/public/IniciarSesion.html");
+			pw.close(); 
+			//url = "/public/IniciarSesion.html";
 		}
-		getServletContext().getRequestDispatcher(url).forward(request, response);
+		
 	}
 	
 	//MD5 hashing

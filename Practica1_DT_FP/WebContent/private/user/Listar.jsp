@@ -72,32 +72,11 @@
                 <td>${pedido.pedidoCabeceraDescuento}</td>
                 <td>${pedido.pedidoCabeceraTotal}</td>
                 <td>${pedido.pedidoCabeceraEstado}</td>
+                <td><button type="button" onclick="">Ver Pedido</button></td>
 				
             </tr> 
     </table>
-    <br><br><hr><br><br>
-    
-    <c:set var="lista" scope="request" value="${pedido.pedidoDetalle}" />
-
-    <table>
-        <tr>
-            <td><strong>Nombre</strong></td>
-            <td><strong>Cantidad</strong></td>
-            <td><strong>PrecioU</strong></td>
-            <td><strong>Subtotal</strong></td>
-            
-        </tr>
-        <c:forEach var="pedD" items="${lista}">
-            <tr>
-						            		
-                <td>${pedD.producto.productoNombre}</td>
-                <td>${pedD.pedidoDetalleCantidad}</td>
-                <td>${pedD.pedidoDetallePrecioUnitario}</td>
-                <td>${pedD.pedidoDetalleSubtotal}</td>
-				
-            </tr>
-        </c:forEach>
-    </table>
+    <br><br>
 
 </body>
 </html>

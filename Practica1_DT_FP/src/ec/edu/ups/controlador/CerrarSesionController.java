@@ -28,10 +28,17 @@ public class CerrarSesionController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		System.out.println("ENTRA A CERRAR SESION");
 		HttpSession session = request.getSession(false);
+		System.out.println("Sesion antes de cerrar"+session.getAttribute("mail"));
 		if (session != null) {
-		    session.invalidate();
+			System.out.println("Se remueven los atributos");
+			session.removeAttribute("mail");
+			session.removeAttribute("password");
+			session.setMaxInactiveInterval(1);
 		}
+		//System.out.println("Sesion despues de cerrar"+session.getAttribute("mail"));
 		String url= "/index.html";
 		getServletContext().getRequestDispatcher(url).forward(request, response);
 	}
@@ -41,6 +48,7 @@ public class CerrarSesionController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("ENTRA A CERRAR SESION2");
 		doGet(request, response);
 	}
 

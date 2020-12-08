@@ -16,7 +16,7 @@ import javax.websocket.Session;
 /**
  * Servlet Filter implementation class Filtro_InicioSesion
  */
-@WebFilter("/Filtro_InicioSesion")
+@WebFilter({"/Filtro_InicioSesion", "/private/*"})
 public class Filtro_InicioSesion implements Filter {
 
     /**
@@ -39,15 +39,16 @@ public class Filtro_InicioSesion implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
+		System.out.println("ENTRA A FILTRO");
 		HttpSession sesion = ((HttpServletRequest)request).getSession();
 		// pass the request along the filter chain
-		if (sesion.getAttribute("Sesion")!=null) {
+		if (sesion.getAttribute("mail")!=null) {
 			//Esta iniciada la sesion
 			System.out.println("Se ha iniciado la sesion");
 			chain.doFilter(request, response);
 		}else {
 			System.out.println("No se ha iniciado sesion");
-			((HttpServletResponse) response).sendRedirect("http://");
+			((HttpServletResponse) response).sendRedirect("/Practica1_DT_FP/public/IniciarSesion.html");
 		}
 		
 	}
