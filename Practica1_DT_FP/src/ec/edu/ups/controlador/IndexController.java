@@ -27,7 +27,7 @@ public class IndexController extends HttpServlet {
      */
     public IndexController() {
     	empresaDAO = DAOFactory.getFactory().getEmpresaDAO();
-    	System.out.println("Creacion de empresa");
+    	//System.out.println("Creacion de empresa");
 		empresa = new Empresa();
     }
 

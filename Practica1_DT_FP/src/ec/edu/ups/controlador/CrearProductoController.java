@@ -65,14 +65,6 @@ public class CrearProductoController extends HttpServlet {
 		
 		//int codigoP = Integer.valueOf(request.getParameter("id"));
 		
-		HttpSession session = request.getSession(false);
-		if (session.getAttribute("mail")!=null) {
-			response.setContentType("text/html");  
-			PrintWriter pw=response.getWriter(); 
-			response.sendRedirect("/Practica1_DT_FP/public/IniciarSesion.html");
-			pw.close(); 
-		}
-		
 		try {
 	   
 			//producto.setProductoId(Integer.valueOf(request.getParameter("id")));

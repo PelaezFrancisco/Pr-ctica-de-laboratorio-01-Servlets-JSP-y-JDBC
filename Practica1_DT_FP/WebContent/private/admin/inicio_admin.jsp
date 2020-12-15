@@ -60,7 +60,7 @@
                 <div class="divider-custom-line"></div>
             </div>
             <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Perfil de Administrador de: ${empresa.persona.get(0).empresaId}</p>
+            <p class="masthead-subheading font-weight-light mb-0">Perfil de Administrador de: ${empresa.empresaNombre}</p>
         </div>
     </header>
     
